@@ -6,7 +6,26 @@
 
 /* KEYFRAMES
 ------------------------------------------------------------------------------------------------- */
-
+@-webkit-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
 
 
 /* VARIABLES
@@ -36,7 +55,19 @@ html {
 body {
 	min-width: 320px;
   font-family: 'Karla', sans-serif;
-  background: var(--black);
+  overflow: hidden;
+}
+
+
+
+/* GENERAL
+------------------------------------------------------------------------------------------------- */
+
+#contentContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: black;
 }
 
 .disrupt {
@@ -45,19 +76,105 @@ body {
   position: fixed;
   letter-spacing: 1rem;
   font-weight: 700;
-  transition: transform .6s ease-out;
+  transition: transform .2s ease-out;
+  opacity: .06;
 }
 
 .disrupt.left {
   font-size: 15vw;
-  top: 75vh;
+  bottom: 0;
   left: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 15%);
+  /*
+  * Update this in js resetDisrupt
+  */
 }
 
 .disrupt.right {
   font-size: 20vw;
-  top: 25vh;
+  top: 0;
   right: 0;
-  transform: translate(50%, -50%);  
+  transform: translate(50%, -15%);
+  /*
+  * Update this in js resetDisrupt
+  */
+}
+
+.registerInterest {
+  content: '';
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 38rem;
+}
+
+.registerInterest .inputContainer {
+  position: relative;
+  text-align: center;
+}
+
+.registerInterest .inputContainer input {
+  padding: 2rem;
+  border: 1px solid #FFFFFF;
+  outline: none;
+  /*b935C3*/
+  font-size: 1.4rem;
+  text-align: center;
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  width: 25rem;
+  color: rgba(0,0,0,0);
+  text-transform: uppercase;
+  transition: width .2s ease-in-out, color .2s ease-in-out 0s;
+}
+
+.registerInterest .inputContainer input:focus,
+.registerInterest .inputContainer input:active {
+  width: 100%;
+  color: rgba(255,255,255,1);
+  cursor: text;
+  background: transparent;
+  transition: width .2s ease-in-out, color .2s ease-in-out .2s, border .2s ease-in-out;
+  border-color: white;
+}
+
+.registerInterest .inputContainer input::placeholder {
+  opacity: 0;
+  transition: opacity .2s ease-in-out 0s;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.registerInterest .inputContainer input:focus::placeholder,
+.registerInterest .inputContainer input:active::placeholder {
+  opacity: 1;
+  transition: opacity .2s ease-in-out .2s;
+}
+
+.registerInterest .inputContainer input:focus + .buttonText {
+  opacity: 0;
+  transition: opacity .2s ease-in-out 0s;
+}
+
+.registerInterest .inputContainer .buttonText {
+  position: absolute;
+  color: #FFFFFF;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  pointer-events: none;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: opacity .2s ease-in-out .2s;
+  line-height: 1.4rem;
+  margin-top: .1rem;
 }

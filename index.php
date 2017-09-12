@@ -17,6 +17,22 @@
   <section id='contentContainer'>
     <h1 class='disrupt left'>DISRUPT</h1>
     <h1 class='disrupt right'>DISRUPT</h1>
+
+    <div class='registerInterest'>
+      <form class="" action="" method="">
+        <div class='inputContainer'>
+          <input type="email" name="email" placeholder="Type your email address">
+
+          <?php
+            if ($_GET) {
+              echo "<span class='buttonText'>Thank you for registering</span>";
+            } else {
+              echo "<span class='buttonText'>Register your interest</span>";
+            }
+           ?>
+        </div>
+      </form>
+    </div>
   </section>
 </body>
 </html>
