@@ -19,7 +19,7 @@
     <h1 class='disrupt right'>DISRUPT</h1>
 
     <div class="details">
-
+      
     </div>
 
     <div class="register-container">
@@ -27,13 +27,14 @@
     </div>
 
     <div class="socials">
-
-      <div class="icon facebook"></div>
-
-      <div class="icon instagram"></div>
-
-
+      <a href="https://www.facebook.com/" target="_blank">
+        <div class="icon facebook"></div>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <div class="icon instagram"></div>
+      </a>
     </div>
+
   </section>
 </body>
 </html>
