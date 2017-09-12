@@ -31,12 +31,16 @@
 /* VARIABLES
 ------------------------------------------------------------------------------------------------- */
 :root {
-  --black: #3E3E3E;
+  --charcoal: #3E3E3E;
+  --light-charcoal: #4B4B4B;
+  --grey: #CACACA;
   --white: #FFFFFF;
   --red: #DC3D50;
   --blue: #515EA4;
-  --green: #8BBE56;
+  --bright-green: #84F965;
+  --dull-green: #8BBE56;
   --yellow: #F8CD60;
+  --purple: #B935C3;
 }
 
 
@@ -55,10 +59,16 @@ html {
 body {
 	min-width: 320px;
   font-family: 'Karla', sans-serif;
+  background: var(--charcoal);
   overflow: hidden;
 }
 
-
+p {
+  letter-spacing: 0.5rem;
+  line-height: 1.4;
+  font-size: 1.5rem;
+  color: var(--white);
+}
 
 /* GENERAL
 ------------------------------------------------------------------------------------------------- */
@@ -177,4 +187,59 @@ body {
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
+}
+
+
+/*date and locations styles*/
+
+.details {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 2rem;
+}
+
+.date {
+  display: flex;
+}
+
+.date p, .location {
+  margin: 0 0.5rem;
+}
+
+
+/*social media link styles*/
+
+.socials {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+}
+
+.socials a {
+  width: 3.8rem;
+  height: 3.8rem;
+  background: var(--light-charcoal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.75rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.socials a:hover {
+  background: var(--purple);
+}
+
+.socials a:visited {
+  color: var(--white);
+}
+
+.socials a i {
+  font-size: 2rem;
 }
