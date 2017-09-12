@@ -7,12 +7,16 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, minimal-ui, user-scalable=0'>
 
     <!-- GENERIC STYLES -->
-    <link type="text/css" rel="style.css">
+    <link rel='stylesheet' href='style.css'>
 
     <!-- GENERIC SCRIPTS -->
-    <script src="script.js"></script>
+    <script src='script.js'></script>
+
 </head>
-    <body>
-        
-    </body>
+<body>
+  <section id='contentContainer'>
+    <h1 class='disrupt left'>DISRUPT</h1>
+    <h1 class='disrupt right'>DISRUPT</h1>
+  </section>
+</body>
 </html>

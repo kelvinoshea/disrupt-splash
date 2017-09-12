@@ -1,0 +1,56 @@
+/* FONTS
+------------------------------------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Karla:100,400,700");
+
+
+
+/* KEYFRAMES
+------------------------------------------------------------------------------------------------- */
+
+
+
+/* VARIABLES
+------------------------------------------------------------------------------------------------- */
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+}
+
+
+/* GLOBAL
+------------------------------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+	min-width: 320px;
+  font-family: 'Karla', sans-serif;
+  background: var(--black);
+}
+
+.disrupt {
+  color: var(--white);
+  font-size: 16vw;
+  line-height: 1;
+  position: fixed;
+  letter-spacing: 2rem;
+}
+
+.disrupt.left {
+  top: 25vh;
+  right: 0;
+  transform: translate(50%, -50%)
+}
+
+.disrupt.right {
+  top: 75vh;
+  left: 0;
+  transform: translate(-50%, -50%)
+}
