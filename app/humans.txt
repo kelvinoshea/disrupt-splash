@@ -3,12 +3,14 @@
 
 # TEAM
 
-  <name> -- <role> -- <twitter>
+  Kelvin O'Shea -- Developer
+  Mitchell Williams -- Developer
+  Zachary McTague -- Developer
 
 # THANKS
 
-  <name>
+  Queensland University of Technology
 
 # TECHNOLOGY COLOPHON
 
-  HTML5, CSS3
+  HTML5, CSS3, NodeJS, JS
