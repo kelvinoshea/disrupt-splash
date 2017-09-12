@@ -12,6 +12,9 @@
     <!-- GENERIC SCRIPTS -->
     <script src='script.js'></script>
 
+    <!-- Font awesome -->
+    <script src="https://use.fontawesome.com/5400611028.js"></script>
+
 </head>
 <body>
   <section id='contentContainer'>
@@ -34,10 +37,10 @@
 
     <div class="socials">
       <a href="https://www.facebook.com/" target="_blank">
-        <div class="icon facebook"></div>
+        <i class="fa fa-facebook"></i>
       </a>
       <a href="https://www.instagram.com/" target="_blank">
-        <div class="icon instagram"></div>
+        <i class="fa fa-instagram"></i>
       </a>
     </div>
 
