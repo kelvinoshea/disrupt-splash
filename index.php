@@ -19,7 +19,14 @@
     <h1 class='disrupt right'>DISRUPT</h1>
 
     <div class="details">
-      
+      <div class="date">
+        <p>17</p>
+        <p>11</p>
+        <p>17</p>
+      </div>
+      <div class="location">
+        <p>QUT KELVIN GROVE</p>
+      </div>
     </div>
 
     <div class="register-container">
