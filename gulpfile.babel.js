@@ -70,7 +70,7 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'));
 });
 
-gulp.task('scripts', () =>
+gulp.task('scripts', function(cb) {
 pump([
     gulp.src([
       // Note: Since we are not using useref in the scripts build pipeline,
@@ -86,14 +86,14 @@ pump([
     $.sourcemaps.write(),
     gulp.dest('.tmp/scripts'),
     $.concat('main.min.js'),
-    $.uglify({preserveComments: 'some'}),
+    $.uglify(),
     // Output files,
     $.size({title: 'scripts'}),
     $.sourcemaps.write('.'),
     gulp.dest('dist/scripts'),
     gulp.dest('.tmp/scripts')
-  ])
-);
+  ], cb)
+});
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
@@ -146,7 +146,7 @@ gulp.task('default', ['scripts', 'styles'], () => {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], () =>
+gulp.task('serve:dist', ['deploy'], () =>
   browserSync({
     notify: false,
     logPrefix: 'WSK',
