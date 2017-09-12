@@ -62,10 +62,20 @@ body {
   transform: translate(50%, -50%);
 }
 
+/*social media link styles*/
+
+.socials {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+}
+
 .icon {
   width: 32px;
   height: 32px;
-  
+  margin: 0 0.5rem;
 }
 
 .facebook {
