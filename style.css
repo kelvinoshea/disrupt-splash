@@ -41,20 +41,23 @@ body {
 
 .disrupt {
   color: var(--white);
-  font-size: 16vw;
   line-height: 1;
   position: fixed;
-  letter-spacing: 2rem;
+  letter-spacing: 1rem;
+  font-weight: 700;
+  transition: transform .6s ease-out;
 }
 
 .disrupt.left {
-  top: 25vh;
-  right: 0;
-  transform: translate(50%, -50%)
+  font-size: 15vw;
+  top: 75vh;
+  left: 0;
+  transform: translate(-50%, -50%);
 }
 
 .disrupt.right {
-  top: 75vh;
-  left: 0;
-  transform: translate(-50%, -50%)
+  font-size: 20vw;
+  top: 25vh;
+  right: 0;
+  transform: translate(50%, -50%);  
 }
