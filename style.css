@@ -59,5 +59,19 @@ body {
   font-size: 20vw;
   top: 25vh;
   right: 0;
-  transform: translate(50%, -50%);  
+  transform: translate(50%, -50%);
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  
+}
+
+.facebook {
+  background-image: url('img/facebook-icon.svg')
+}
+
+.instagram {
+  background-image: url('img/instagram-icon.svg')
 }

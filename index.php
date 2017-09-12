@@ -17,6 +17,23 @@
   <section id='contentContainer'>
     <h1 class='disrupt left'>DISRUPT</h1>
     <h1 class='disrupt right'>DISRUPT</h1>
+
+    <div class="details">
+
+    </div>
+
+    <div class="register-container">
+
+    </div>
+
+    <div class="socials">
+
+      <div class="icon facebook"></div>
+
+      <div class="icon instagram"></div>
+
+
+    </div>
   </section>
 </body>
 </html>
