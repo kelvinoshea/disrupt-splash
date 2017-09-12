@@ -30,7 +30,6 @@
     </div>
 
     <div class="register-container">
-
     </div>
 
     <div class="socials">
