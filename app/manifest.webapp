@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Disrupt17",
+  "launch_path": "/index.html",
+  "description": "A promotional website for Disrupt17.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "",
+    "url": ""
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Disrupt17",
+      "description": "A promotional website for Disrupt17."
+    }
+  }
+}

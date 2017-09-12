@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Kelvin O'Shea -- Developer
+  Mitchell Williams -- Developer
+  Zachary McTague -- Developer
+
+# THANKS
+
+  Queensland University of Technology
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, NodeJS, JS
