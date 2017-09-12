@@ -27,7 +27,8 @@
         <p>11</p>
         <p>17</p>
       </div>
-      <div class="location">
+
+      <div class="location">        
         <p>QUT KELVIN GROVE</p>
       </div>
     </div>
@@ -47,11 +48,10 @@
     <div class='registerInterest'>
       <form class="" action="" method="">
         <div class='inputContainer'>
-          <input type="email" name="email" placeholder="Type your email address">
-
+          <input autocomplete='off' type='email' name='email' placeholder='Type your email address'>
           <?php
             if ($_GET) {
-              echo "<span class='buttonText'>Thank you for registering</span>";
+              echo "<span class='buttonText'>Thanks for registering</span>";
             } else {
               echo "<span class='buttonText'>Register your interest</span>";
             }
