@@ -1,0 +1,28 @@
+/* GLOBAL
+------------------------------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+	min-width: 320px;
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'Karla', sans-serif;
+  background: var(--charcoal);
+  overflow: hidden;
+}
+
+p {
+  letter-spacing: 0.5rem;
+  line-height: 1.4;
+  font-size: 1.5rem;
+  color: var(--white);
+}
