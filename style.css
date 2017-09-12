@@ -222,7 +222,8 @@ p {
 .socials a {
   width: 3.8rem;
   height: 3.8rem;
-  background: var(--light-charcoal);
+  border: 0.1rem solid var(--white);
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,16 +231,30 @@ p {
   color: var(--white);
   text-decoration: none;
   transition: 0.2s;
-}
-
-.socials a:hover {
-  background: var(--purple);
+  position: relative;
+  overflow: hidden;
 }
 
 .socials a:visited {
   color: var(--white);
 }
 
+.socials a:after {
+  content: '';
+  height: 0%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: var(--purple);
+  transition: 0.2s height;
+}
+
+.socials a:hover:after  {
+  height: 50%;
+}
+
 .socials a i {
   font-size: 2rem;
+  position: absolute;
+  z-index: 2;
 }
