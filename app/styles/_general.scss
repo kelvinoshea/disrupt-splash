@@ -80,7 +80,7 @@
 
 .registerInterest .inputContainer input:focus,
 .registerInterest .inputContainer input:active {
-  width: 100%;
+  width: 90%;
   color: rgba(255,255,255,1);
   cursor: text;
   background: transparent;
@@ -130,10 +130,15 @@
 
 .details {
   display: flex;
+  flex-wrap: wrap;
   position: fixed;
   top: 0;
   left: 0;
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  .date, .location {
+    margin-top: 1rem;
+  }
   i {
     margin-right: 0.8rem;
   }
