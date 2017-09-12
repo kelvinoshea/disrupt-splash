@@ -1,9 +1,9 @@
 /* GLOBAL
 ------------------------------------------------------------------------------------------------- */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -16,13 +16,26 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: 'Karla', sans-serif;
-  background: var(--charcoal);
+  background: $charcoal;
   overflow: hidden;
+  color: $white;
 }
 
 p {
   letter-spacing: 0.5rem;
   line-height: 1.4;
   font-size: 1.5rem;
-  color: var(--white);
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+  &:hover {
+  color: $white;
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
 }

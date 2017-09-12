@@ -14,7 +14,7 @@
 }
 
 .disrupt {
-  color: var(--white);
+  color: $white;
   line-height: 1;
   position: fixed;
   letter-spacing: 1rem;
@@ -68,8 +68,8 @@
   border: 1px solid #FFFFFF;
   outline: none;
   font-size: 1.4rem;
-  text-align: center;
   background: transparent;
+  text-align: left;
   border-radius: 0;
   cursor: pointer;
   width: 25rem;
@@ -93,7 +93,8 @@
   transition: opacity .2s ease-in-out 0s;
   text-transform: uppercase;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 500;
+  text-align: center;
 }
 
 .registerInterest .inputContainer input:focus::placeholder,
@@ -133,15 +134,25 @@
   top: 0;
   left: 0;
   margin: 2rem;
+  i {
+    margin-right: 0.8rem;
+  }
+  .date {
+    margin-right: 2.5rem;
+  }
+  .date p {
+    margin-right: 0.5rem;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    &:hover i {
+      color: $purple;
+    }
+  }
 }
 
-.date {
-  display: flex;
-}
 
-.date p, .location {
-  margin: 0 0.5rem;
-}
 
 
 /*social media link styles*/
@@ -157,13 +168,13 @@
 .socials a {
   width: 3.8rem;
   height: 3.8rem;
-  border: 0.1rem solid var(--white);
+  border: 0.1rem solid $white;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 0.75rem;
-  color: var(--white);
+  color: $white;
   text-decoration: none;
   transition: 0.2s;
   position: relative;
@@ -171,7 +182,7 @@
 }
 
 .socials a:visited {
-  color: var(--white);
+  color: $white;
 }
 
 .socials a:after {
@@ -180,7 +191,7 @@
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: var(--purple);
+  background: $purple;
   transition: 0.2s height;
 }
 
