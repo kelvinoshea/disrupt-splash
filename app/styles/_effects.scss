@@ -1,0 +1,22 @@
+.effect_colourBox {
+  width: 150px;
+  height: 50px;
+  display: flex;
+
+  & > div {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    mix-blend-mode: screen;
+    opacity: 0.5;
+  }
+  .red {
+    background-color: red;
+  }
+  .blue {
+    background-color: blue;
+  }
+  .green {
+    background-color: green;
+  }
+}

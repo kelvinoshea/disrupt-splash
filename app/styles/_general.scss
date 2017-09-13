@@ -2,14 +2,12 @@
 ------------------------------------------------------------------------------------------------- */
 
 #contentContainer {
-  position: fixed;
+  position: relative;
   height: 100vh;
   width: 100vw;
   background: linear-gradient(270deg, #101010, #151515, #202020, #252525);
   background-size: 800% 800%;
 
-  -webkit-animation: AnimationName 90s ease infinite;
-  -moz-animation: AnimationName 90s ease infinite;
   animation: AnimationName 90s ease infinite;
 }
 
@@ -208,4 +206,39 @@
   font-size: 2rem;
   position: absolute;
   z-index: 2;
+}
+
+#hitboxes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: transparent;
+
+  .item {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #fff;
+    position: absolute;
+    border-radius: 50px;
+    cursor: crosshair;
+
+    &:hover {
+      border-color: coral;
+    }
+  }
+}
+
+#effectOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  pointer-events: none;
+  &>* {
+    position: absolute;
+  }
 }

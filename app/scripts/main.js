@@ -1,6 +1,19 @@
 $(function() {
   // We Ready Boiis
 
+  $('#hitboxes .item').hover(function(event) {
+    // IN
+    if ($('#effectOverlay > *').hasClass('hidden')) {
+      $('#effectOverlay > *').removeClass('hidden');
+    }
+
+  }, function(event) {
+    // OUT
+    if (!$('#effectOverlay > *').hasClass('hidden')) {
+      $('#effectOverlay > *').addClass('hidden');
+    }
+  });
+
   $('#formEmail').submit(function() {
     $.ajax({
     type: 'POST',
@@ -39,10 +52,6 @@ $(function() {
       $('#formEmail .buttonText').html("Thank You");
     }
   });
-
-
-
-
-    return false;
+    return false; // cancel default
   });
 });
