@@ -20,3 +20,12 @@
     background-color: green;
   }
 }
+
+
+#TESTING {
+  .example-one {
+    font-size: 100px;
+    @include textGlitch("example-one", 15, white, transparent, red, blue, 450, 115);
+    line-height: 1.4;
+  }
+}

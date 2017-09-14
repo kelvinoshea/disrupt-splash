@@ -121,6 +121,7 @@
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
+  @include textGlitch("buttonText", 10, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
 }
 
 
