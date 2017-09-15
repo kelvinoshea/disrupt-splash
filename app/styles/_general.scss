@@ -122,6 +122,9 @@
   line-height: 1.4rem;
   margin-top: .1rem;
   @include textGlitch("buttonText", 10, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  &:hover:after, &:hover {
+    animation: none;
+  }
 }
 
 
@@ -201,6 +204,10 @@
 
 .socials a:hover:after  {
   height: 50%;
+}
+
+.socials a:active:after  {
+  height: 100%;
 }
 
 .socials a i {
