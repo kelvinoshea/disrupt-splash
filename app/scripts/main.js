@@ -14,44 +14,76 @@ $(function() {
     }
   });
 
-  $('#formEmail').submit(function() {
+/* AJAX FORM SUBMISSION
+------------------------------------------------------------------------------------------------- */
+  function formSubmit() {
     $.ajax({
-    type: 'POST',
-    url: '',
-    data: { email: $('#formEmail .email').val()},
-    secure: true,
-    tryCount: 0,
-    retryLimit: 3,
-    beforeSend: function() {
+      url: 'registerEmail.php',
+      type: 'POST',
+      data: {
+        email: $('.email').val(),
+      },
+      beforeSend: function() {
+        $('.email').next().attr('data-text', 'Registering Interest...').html('Registering Interest...');
 
-    },
-    error: function(jqXHR, textStatus, error) {
-      if (textStatus === 'timeout') {
-        this.tryCount++;
-        if (this.tryCount <= this.retryLimit) {
-            // try again
-            $.ajax(this);
-            return;
-        }
-        console.log("Arax Request Failed:");
-        console.log(jqXHR.responseText);
-        console.log(textStatus);
-        console.log(error);
-        console.log("Query: " + query);
-        console.log("--------------------");
-      } else {
-        console.log("Arax Request Failed:");
-        console.log(jqXHR.responseText);
-        console.log(textStatus);
-        console.log(error);
-        console.log("Query: " + query);
-        console.log("--------------------");
+      },
+      success: function(result) {
+        console.log('Success');
+        $('.email').next().attr('data-text', 'Thank You!').html('Thank You!');
+
+      },
+      error: function(error) {
+        console.log('error');
       }
-    },
-    success: function() {
-      $('#formEmail .buttonText').html("Thank You");
-    }
+    });
+  }
+
+  $('#formEmail .email').on('click', function() {
+    $(this).blur(function(){
+      formSubmit();
+    });
   });
-    return false; // cancel default
-  });
+
+  // $('#formEmail').submit(formSubmit);
+
+  // $('#formEmail').submit(function() {
+  //   $.ajax({
+  //   type: 'POST',
+  //   url: '',
+  //   data: { email: $('#formEmail .email').val()},
+  //   secure: true,
+  //   tryCount: 0,
+  //   retryLimit: 3,
+  //   beforeSend: function() {
+  //
+  //   },
+  //   error: function(jqXHR, textStatus, error) {
+  //     if (textStatus === 'timeout') {
+  //       this.tryCount++;
+  //       if (this.tryCount <= this.retryLimit) {
+  //           // try again
+  //           $.ajax(this);
+  //           return;
+  //       }
+  //       console.log("Arax Request Failed:");
+  //       console.log(jqXHR.responseText);
+  //       console.log(textStatus);
+  //       console.log(error);
+  //       console.log("Query: " + query);
+  //       console.log("--------------------");
+  //     } else {
+  //       console.log("Arax Request Failed:");
+  //       console.log(jqXHR.responseText);
+  //       console.log(textStatus);
+  //       console.log(error);
+  //       console.log("Query: " + query);
+  //       console.log("--------------------");
+  //     }
+  //   },
+  //   success: function() {
+  //     $('#formEmail .buttonText').html("Thank You");
+  //   }
+  // });
+  //   return false; // cancel default
+  // });
 });
