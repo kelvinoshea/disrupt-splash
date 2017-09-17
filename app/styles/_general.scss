@@ -187,13 +187,13 @@
 
 .facebook {
   &:hover {
-    @include buttonBackgroundGlitch($blue, $yellow, $bright-green);
+    @include buttonBackgroundGlitch(facebookAnim, $blue, $yellow, $bright-green, normal);
   }
 }
 
 .instagram {
   &:hover {
-    @include buttonBackgroundGlitch($purple, $bright-green, $red, alternate-reverse);
+    @include buttonBackgroundGlitch(instagramAnim, $purple, $bright-green, $red, alternate-reverse);
   }
 }
 
