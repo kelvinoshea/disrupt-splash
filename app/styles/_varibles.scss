@@ -105,13 +105,16 @@
         width: 20%;
         height: 20%;
         left: 5%;
-        top: 50%;
+        top: 0%;
         background-color: $colour3;
       }
 
       17% {
         background-color: $colour2;
         width: 80%;
+        top: 50%;
+        height: 25%;
+        left: 20%;
       }
 
       20% {
