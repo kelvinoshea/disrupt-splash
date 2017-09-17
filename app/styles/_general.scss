@@ -183,7 +183,15 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
+}
 
+.facebook {
+  &:hover {
+    @include buttonBackgroundGlitch($blue, $yellow, $bright-green);
+  }
+}
+
+.instagram {
   &:hover {
     @include buttonBackgroundGlitch($purple, $bright-green, $red);
   }
