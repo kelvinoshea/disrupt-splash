@@ -72,3 +72,41 @@
       animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
     }
   }
+
+  @mixin buttonBackgroundGlitch($colour1, $colour2, $colour3) {
+    &:before,
+    &:after {
+      content: '';
+      animation-name: bgGlitch;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    @keyframes bgGlitch {
+      0% {
+        height: 50%;
+        background-color: $colour1;
+      }
+
+      10% {
+        height: 10%;
+      }
+
+      17% {
+        background-color: $colour2;
+        width: 80%;
+      }
+
+      30% {
+        height: 100%;
+      }
+
+      100% {
+        background-color: $colour3;
+      }
+    }
+  }

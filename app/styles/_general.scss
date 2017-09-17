@@ -122,9 +122,6 @@
   line-height: 1.4rem;
   margin-top: .1rem;
   @include textGlitch("buttonText", 10, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-  &:hover:after, &:hover {
-    animation: none;
-  }
 }
 
 
@@ -206,10 +203,6 @@
   height: 50%;
 }
 
-.socials a:active:after  {
-  height: 100%;
-}
-
 .socials a i {
   font-size: 2rem;
   position: absolute;
@@ -249,4 +242,14 @@
   &>* {
     position: absolute;
   }
+}
+
+.test-bg-glitch {
+  height: 100px;
+  width: 100px;
+  background: purple;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  @include buttonBackgroundGlitch(red, green, blue);
 }
