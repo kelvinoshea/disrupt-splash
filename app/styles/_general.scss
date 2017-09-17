@@ -158,7 +158,6 @@
 
 
 
-
 /*social media link styles*/
 
 .socials {
@@ -192,11 +191,19 @@
   &:hover {
     @include buttonBackgroundGlitch(facebookAnim, $blue, $yellow, $bright-green, normal);
   }
+
+  &:active {
+    background: $white;
+  }
 }
 
 .instagram-link {
   &:hover {
     @include buttonBackgroundGlitch(instagramAnim, $purple, $bright-green, $red, alternate-reverse);
+  }
+
+  &:active {
+    background: $white;
   }
 }
 
@@ -242,4 +249,10 @@
   &>* {
     position: absolute;
   }
+}
+
+.wave-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
