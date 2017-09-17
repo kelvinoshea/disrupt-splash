@@ -80,10 +80,14 @@
       animation-name: testAnim;
       animation-fill-mode: both;
       animation-iteration-count: infinite;
+      animation-duration: 0.4s;
+      animation-timing-function: steps;
+      animation-direction: alternate-reverse;
       width: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
+      z-index: 1;
     }
 
     @keyframes testAnim {
@@ -94,6 +98,15 @@
 
       10% {
         height: 10%;
+        right: 50%;
+      }
+
+      15% {
+        width: 20%;
+        height: 20%;
+        left: 5%;
+        top: 50%;
+        background-color: $colour3;
       }
 
       17% {
@@ -101,8 +114,56 @@
         width: 80%;
       }
 
+      20% {
+        background-color: none;
+      }
+
       30% {
         height: 100%;
+      }
+
+      32% {
+        background: $colour1;
+        bottom: 50%;
+      }
+
+      50% {
+        right: 10%;
+        top: 0;
+        left: 10%;
+        width: 50%;
+      }
+
+      55% {
+        height: 90%;
+        background-color: $colour3;
+      }
+
+      60% {
+        height: 0;
+        width: 0;
+      }
+
+      69% {
+        left: 80%;
+        height: 5%;
+        width: 5%;
+        background-color: $colour1;
+      }
+
+      72% {
+        bottom: 5%;
+        width: 100%;
+        left: 0;
+        background-color: $colour2;
+      }
+
+      80% {
+        height: 100%;
+        width: 90%;
+        bottom: 0;
+        right: 0;
+        background-color: $colour1;
       }
 
       100% {

@@ -183,24 +183,14 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
+
+  &:hover {
+    @include buttonBackgroundGlitch($purple, $bright-green, $red);
+  }
 }
 
 .socials a:visited {
   color: $white;
-}
-
-.socials a:after {
-  content: '';
-  height: 0%;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background: $purple;
-  transition: 0.2s height;
-}
-
-.socials a:hover:after  {
-  height: 50%;
 }
 
 .socials a i {
@@ -242,14 +232,4 @@
   &>* {
     position: absolute;
   }
-}
-
-.test-bg-glitch {
-  height: 100px;
-  width: 100px;
-  background: purple;
-  position: absolute;
-  left: 100px;
-  top: 100px;
-  @include buttonBackgroundGlitch(red, green, blue);
 }
