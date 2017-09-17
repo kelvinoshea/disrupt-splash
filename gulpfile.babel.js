@@ -70,6 +70,40 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'));
 });
 
+// Compile and automatically prefix stylesheets
+gulp.task('styles_dev', () => {
+  const AUTOPREFIXER_BROWSERS = [
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+  ];
+
+  // For best performance, don't add Sass partials to `gulp.src`
+  return gulp.src([
+    'app/styles/**/*.scss',
+    'app/styles/**/*.css'
+  ])
+    .pipe($.newer('.tmp/styles'))
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({
+      precision: 10
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(gulp.dest('.tmp/styles'))
+    // Concatenate and minify styles
+    //.pipe($.if('*.css', $.cssnano()))
+    //.pipe($.size({title: 'styles'}))
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('.tmp/styles'));
+});
+
 gulp.task('scripts', function(cb) {
 pump([
     gulp.src([
@@ -124,7 +158,7 @@ gulp.task('html', () => {
 gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('default', ['scripts', 'styles'], () => {
+gulp.task('default', ['scripts', 'styles_dev'], () => {
   browserSync({
     notify: false,
     // Customize the Browsersync console logging prefix
@@ -140,7 +174,7 @@ gulp.task('default', ['scripts', 'styles'], () => {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles_dev', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['scripts', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });
