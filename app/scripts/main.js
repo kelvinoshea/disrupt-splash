@@ -29,11 +29,14 @@ $(function() {
       },
       success: function(result) {
         console.log('Success');
-        $('.email').next().attr('data-text', 'Thank You!').html('Thank You!');
+        $('.email').next().attr('data-text', 'Success!').html('Success!');
+        $('.email').css('pointer-events', 'none');
 
       },
       error: function(error) {
         console.log('error');
+        $('.email').next().attr('data-text', 'Try Again').html('Try Again');
+
       }
     });
   }
@@ -44,7 +47,10 @@ $(function() {
     });
   });
 
-  // $('#formEmail').submit(formSubmit);
+  $('#formEmail').submit(function(e){
+    e.preventDefault();
+    formSubmit();
+  });
 
   // $('#formEmail').submit(function() {
   //   $.ajax({
