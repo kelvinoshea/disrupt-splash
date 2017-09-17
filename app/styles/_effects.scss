@@ -36,20 +36,33 @@
   left: 50%;
   background: $charcoal;
   opacity: .1;
-  width: 500px;
-  height: 500px;
   margin-left: -250px;
   margin-top: -250px;
   transform-origin: 50% 48%;
   border-radius: 43%;
   animation: drift 3000ms infinite linear;
+
+  &.-one {
+    width: 100%;
+    height: 100%;
+  }
 }
 
+
 .wave.-three {
+  width: 70%;
+  height: 70%;
   animation: drift 5000ms infinite linear;
+  width:
 }
 
 .wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: $charcoal;
+}
+
+.wave.-four {
   animation: drift 7000ms infinite linear;
   opacity: .1;
   background: $charcoal;

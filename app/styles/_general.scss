@@ -121,7 +121,7 @@
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
-  @include textGlitch("buttonText", 10, #FFFFFF, transparent, $neon-pink, $neon-cyan, 200, 15);
+  @include textGlitch("buttonText", 10, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
 }
 
 
@@ -182,9 +182,6 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
-  &:active i {
-    color: transparent;
-  }
 }
 
 .facebook-link {
@@ -199,7 +196,7 @@
 
 .instagram-link {
   &:hover {
-    @include buttonBackgroundGlitch(instagramAnim, $purple, $bright-green, $red, alternate-reverse);
+    @include buttonBackgroundGlitch(instagramAnim, $purple, $neon-cyan, $red, alternate-reverse);
   }
 
   &:active {
@@ -255,4 +252,6 @@
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 500px;
+  height: 500px;
 }
