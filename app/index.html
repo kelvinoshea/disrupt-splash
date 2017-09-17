@@ -37,7 +37,7 @@
   <!--[if lt IE 9]>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
-
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
   <main id="contentContainer">
@@ -67,10 +67,18 @@
 
     <div class="registerInterest">
       <form id="formEmail">
+        <!-- NOTE: Add hidden reCAPTCHA for email inputs to weed out bots n shit. -->
+        <!-- https://developers.google.com/recaptcha/docs/invisible -->
+        <!-- <div class="g-recaptcha"
+          data-sitekey="6Lel-zAUAAAAAKk2In1vbqXTFk6j_Cv-XWBlvvZq"
+          data-callback="onSubmit"
+          data-size="invisible">
+      </div> -->
         <div class="inputContainer">
           <div class="inputInnerContainer">
-            <input class="email" autocomplete="off" type="text" name="email" placeholder="Type your email address" required>
+            <input class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
                 <span class="buttonText" data-text="Register your interest">Register your interest</span>
+
           </div>
         </div>
       </form>
@@ -89,9 +97,9 @@
     </div>
 
     <div class="wave-container">
-      <div class='wave -one'></div>
-      <div class='wave -two'></div>
-      <div class='wave -three'></div>
+      <div class="wave -one"></div>
+      <div class="wave -two"></div>
+      <div class="wave -three"></div>
       <div class="wave -four"></div>
     </div>
 

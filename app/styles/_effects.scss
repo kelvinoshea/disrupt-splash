@@ -25,7 +25,7 @@
 #TESTING {
   .example-one {
     font-size: 100px;
-    @include textGlitch("example-one", 15, white, transparent, red, blue, 450, 115);
+    @include textGlitch("example-one", 15, white, transparent, #00ffff, #ff00ff, 450, 115);
     line-height: 1.4;
   }
 }
@@ -53,7 +53,6 @@
   width: 70%;
   height: 70%;
   animation: drift 5000ms infinite linear;
-  width:
 }
 
 .wave.-two {
