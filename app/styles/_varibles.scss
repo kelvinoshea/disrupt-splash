@@ -73,11 +73,21 @@
     }
   }
 
-  @mixin buttonBackgroundGlitch($colour1, $colour2, $colour3, $direction) {
+  /*
+    (TEXT) PARAMS
+    =================
+    1. Name of animation
+    2. First colour
+    3. Second color
+    4. Third colour
+    5. Animation direction
+  */
+
+  @mixin buttonBackgroundGlitch($name, $colour1, $colour2, $colour3, $direction) {
     &:before,
     &:after {
       content: '';
-      animation-name: testAnim;
+      animation-name: #{$name};
       animation-fill-mode: both;
       animation-iteration-count: infinite;
       animation-duration: 0.4s;
@@ -89,7 +99,7 @@
       z-index: 1;
     }
 
-    @keyframes testAnim {
+    @keyframes #{$name} {
       0% {
         height: 50%;
         width: 100%;
