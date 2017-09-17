@@ -185,13 +185,13 @@
   overflow: hidden;
 }
 
-.facebook {
+.facebook-link {
   &:hover {
     @include buttonBackgroundGlitch(facebookAnim, $blue, $yellow, $bright-green, normal);
   }
 }
 
-.instagram {
+.instagram-link {
   &:hover {
     @include buttonBackgroundGlitch(instagramAnim, $purple, $bright-green, $red, alternate-reverse);
   }
@@ -203,7 +203,6 @@
 
 .socials a i {
   font-size: 2rem;
-  position: absolute;
   z-index: 2;
 }
 
