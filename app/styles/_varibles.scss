@@ -73,7 +73,7 @@
     }
   }
 
-  @mixin buttonBackgroundGlitch($colour1, $colour2, $colour3) {
+  @mixin buttonBackgroundGlitch($colour1, $colour2, $colour3, $direction) {
     &:before,
     &:after {
       content: '';
@@ -82,7 +82,7 @@
       animation-iteration-count: infinite;
       animation-duration: 0.4s;
       animation-timing-function: steps;
-      animation-direction: alternate;
+      animation-direction: $direction;
       position: absolute;
       bottom: 0;
       left: 0;

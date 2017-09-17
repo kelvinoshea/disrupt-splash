@@ -193,7 +193,7 @@
 
 .instagram {
   &:hover {
-    @include buttonBackgroundGlitch($purple, $bright-green, $red);
+    @include buttonBackgroundGlitch($purple, $bright-green, $red, alternate-reverse);
   }
 }
 
