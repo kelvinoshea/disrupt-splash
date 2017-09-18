@@ -136,8 +136,16 @@
     overflow: hidden;
     padding: 0.25rem;
     z-index: 2;
-    &:hover {
-      @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+    @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+    cursor: pointer;
+
+    &:hover, &:focus {
+      background: $bright-green;
+      box-shadow: 0px 1px 1px $dull-green;
+
+      button {
+        color: $charcoal;
+      }
     }
   }
 
@@ -148,9 +156,9 @@
     color: $white;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    cursor: pointer;
     outline: none;
     font-size: 1.4rem;
+    cursor: pointer;
 
     &:active {
       color: $bright-green;
@@ -190,18 +198,6 @@
     &:hover i {
       color: $purple;
     }
-  }
-}
-
-.location {
-  &:hover {
-    @include buttonBackgroundGlitch(locationHoverAnim, $blue, $blue, $white, alternate);
-  }
-}
-
-.date {
-  &:hover {
-    @include buttonBackgroundGlitch(dateHoverAnim, $white, $light-charcoal, $yellow, normal);
   }
 }
 
