@@ -195,13 +195,13 @@
 
 .location {
   &:hover {
-    @include buttonBackgroundGlitch(locationHoverAnim, $blue, $neon-cyan, $white, alternate);
+    @include buttonBackgroundGlitch(locationHoverAnim, $blue, $blue, $white, alternate);
   }
 }
 
 .date {
   &:hover {
-    @include buttonBackgroundGlitch(dateHoverAnim, $grey, $light-charcoal, $charcoal, normal);
+    @include buttonBackgroundGlitch(dateHoverAnim, $white, $light-charcoal, $charcoal, normal);
   }
 }
 
@@ -235,7 +235,7 @@
 
 .facebook-link {
   &:hover {
-    @include buttonBackgroundGlitch(facebookAnim, $blue, $yellow, $bright-green, normal);
+    @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
   }
 
   &:active {
@@ -245,7 +245,7 @@
 
 .instagram-link {
   &:hover {
-    @include buttonBackgroundGlitch(instagramAnim, $purple, $neon-cyan, $red, alternate-reverse);
+    @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
   }
 
   &:active {
