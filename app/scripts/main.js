@@ -33,32 +33,32 @@ $(function() {
     if ($(this).val() == "") {
       $('.email').next().attr('data-text', 'REGISTER YOUR INTEREST').html('Register your interest');
     }
-    // Adds the .valid class. Probably not needed as we can use :valid/:invalid
-    /* var email = document.querySelector('.email');
+    var email = document.querySelector('.email');
     if (email.validity.valid) {
-      if (!$(".email").hasClass("valid")) {
-         $(".email").addClass("valid");
+      if ($(".submitButton").hasClass("hidden")) {
+         $(".submitButton").removeClass("hidden");
        }
     } else {
-      if ($(".email").hasClass("valid")) {
-        $(".email").removeClass("valid");
+      if (!$(".submitButton").hasClass("hidden")) {
+        $(".submitButton").addClass("hidden");
       }
-    } */
+    }
   });
 
-  $('#formEmail .email').blur(function(){
+  /* $('#formEmail .email').blur(function(){
     var email = document.querySelector('.email');
     if (email.validity.valid) {
       formSubmit();
     } else if (!email.validity.valueMissing) {
       formInvalid();
     }
-  });
+  }); */
 
   $('#formEmail').submit(function(e){
     e.preventDefault();
     var email = document.querySelector('.email');
     if (email.validity.valid) {
+      $(".email").blur();
       formSubmit();
     } else {
       formInvalid();
@@ -69,6 +69,7 @@ $(function() {
 /* AJAX FORM SUBMISSION
 ------------------------------------------------------------------------------------------------- */
   function formSubmit() {
+    $(".submitButton").addClass("hidden");
     if (!isLocalhost) {
       $.ajax({
         url: 'registerEmail.php',
@@ -94,6 +95,7 @@ $(function() {
       });
     } else {
       $('.email').next().attr('data-text', 'Emulated Success!').html('Emulated Success!');
+      $('.email').css('pointer-events', 'none');
     }
   }
 

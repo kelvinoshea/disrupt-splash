@@ -76,14 +76,6 @@
   transition: width .2s ease-in-out, color .2s ease-in-out 0s;
 }
 
-.registerInterest .inputContainer input:focus:valid {
-  border-color: $bright-green;
-}
-
-.registerInterest .inputContainer input:not([value=""]):focus:invalid {
-  border-color: $red;
-}
-
 .registerInterest .inputContainer input:focus,
 .registerInterest .inputContainer input:active {
   width: 90%;
@@ -131,6 +123,49 @@
   @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
 }
 
+.submitButtonContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+
+  .submitButton {
+    position: relative;
+    overflow: hidden;
+    padding: 0.25rem;
+    z-index: 2;
+    @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+    cursor: pointer;
+
+    &:hover, &:focus {
+      background: $bright-green;
+      box-shadow: 0px 1px 1px $dull-green;
+
+      button {
+        color: $charcoal;
+      }
+    }
+  }
+
+  button {
+    border: 0;
+    background: none;
+    appearance: none;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    outline: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &:active {
+      color: $bright-green;
+    }
+  }
+}
+
 
 /*date and locations styles*/
 
@@ -144,6 +179,9 @@
   margin-top: 1rem;
   .date, .location {
     margin-top: 1rem;
+    padding: 0.25rem;
+    position: relative;
+    overflow: hidden;
   }
   i {
     margin-right: 0.8rem;
@@ -193,7 +231,7 @@
 
 .facebook-link {
   &:hover {
-    @include buttonBackgroundGlitch(facebookAnim, $blue, $yellow, $bright-green, normal);
+    @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
   }
 
   &:active {
@@ -203,7 +241,7 @@
 
 .instagram-link {
   &:hover {
-    @include buttonBackgroundGlitch(instagramAnim, $purple, $neon-cyan, $red, alternate-reverse);
+    @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
   }
 
   &:active {

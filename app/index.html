@@ -51,7 +51,6 @@
     <div class="details">
       <div class="date">
         <a href="#" target="_blank">
-          <i class="fa fa-calendar-o fw" aria-hidden="true"></i>
           <p>17</p>
           <p>11</p>
           <p>17</p>
@@ -59,7 +58,6 @@
       </div>
       <div class="location">
         <a href="https://maps.google.com/?q=QUT+Kelvin+Grove+Campus" target="_blank">
-          <i class="fa fa-map-marker fw" aria-hidden="true"></i>
           <p>QUT KELVIN GROVE</p>
         </a>
       </div>
@@ -75,10 +73,14 @@
           data-size="invisible">
       </div> -->
         <div class="inputContainer">
-          <div class="inputInnerContainer">
-            <input class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
-                <span class="buttonText" data-text="Register your interest">Register your interest</span>
-
+          <input id="inp_email" class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
+              <span class="buttonText" data-text="Register your interest">Register your interest</span>
+        </div>
+        <div class="submitButtonContainer">
+          <div class="submitButton hidden">
+            <button type="submit" for="inp_email">
+              register
+            </button>
           </div>
         </div>
       </form>
