@@ -76,14 +76,6 @@
   transition: width .2s ease-in-out, color .2s ease-in-out 0s;
 }
 
-.registerInterest .inputContainer input:focus:valid {
-  border-color: $bright-green;
-}
-
-.registerInterest .inputContainer input:not([value=""]):focus:invalid {
-  border-color: $red;
-}
-
 .registerInterest .inputContainer input:focus,
 .registerInterest .inputContainer input:active {
   width: 90%;
@@ -129,6 +121,41 @@
   line-height: 1.4rem;
   margin-top: .1rem;
   @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+}
+
+.submitButtonContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+
+  .submitButton {
+    position: relative;
+    overflow: hidden;
+    padding: 0.25rem;
+    z-index: 2;
+    &:hover {
+      @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+    }
+  }
+
+  button {
+    border: 0;
+    background: none;
+    appearance: none;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.4rem;
+
+    &:active {
+
+    }
+  }
 }
 
 
