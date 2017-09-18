@@ -201,7 +201,7 @@
 
 .date {
   &:hover {
-    @include buttonBackgroundGlitch(dateHoverAnim, $white, $light-charcoal, $charcoal, normal);
+    @include buttonBackgroundGlitch(dateHoverAnim, $white, $light-charcoal, $yellow, normal);
   }
 }
 
