@@ -177,7 +177,9 @@
     left: 0;
   }
   &.right {
-
+    top: 0;
+    right: 0;
+    transform: translate(50%, -15%);
   }
   i {
     margin-right: 0.8rem;
