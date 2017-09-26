@@ -17,7 +17,7 @@
 // title styles
 
 .disruptTitleStatic {
-  font-family: "Futura", sans-serif;
+  font-family: "FuturaPT-Heavy", sans-serif;
   text-transform: uppercase;
   font-size: 10rem;
   letter-spacing: 10rem;
@@ -41,11 +41,6 @@
 
 .registerInterest {
   display: block;
-  // position: fixed;
-  // left: 50%;
-  // top: 50%;
-  // z-index: 10;
-  // transform: translate(-50%, -50%);
   width: 100%;
 }
 
@@ -69,7 +64,8 @@
   border-radius: 0;
   cursor: pointer;
   width: 25rem;
-  color: rgba(0,0,0,0);
+  // color: rgba(0,0,0,0);
+  font-weight: 700;
   text-transform: uppercase;
   transition: width .2s ease-in-out, color .2s ease-in-out 0s;
 }
@@ -90,6 +86,7 @@
   font-size: 1.4rem;
   font-weight: 500;
   text-align: center;
+  color: #fff;
 }
 
 .registerInterest .inputContainer input:focus::placeholder,
@@ -200,18 +197,17 @@
   }
 }
 
+.footer
+
 
 /*social media link styles*/
 
 .socials {
   display: flex;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 2rem;
+  justify-content: space-around;
 }
 
-.socials a {
+.icon-link {
   width: 3.8rem;
   height: 3.8rem;
   border: 0.1rem solid $white;
@@ -225,27 +221,41 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
+
+  &.facebook {
+    &:hover {
+      @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
+  &.instagram {
+    &:hover {
+      @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
+  &.qut-icon {
+    background-image: url(../images/qut.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+  }
 }
 
-.facebook-link {
-  &:hover {
-    @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
-  }
+.socials a {
 
-  &:active {
-    background: $white;
-  }
 }
 
-.instagram-link {
-  &:hover {
-    @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
-  }
 
-  &:active {
-    background: $white;
-  }
-}
 
 .socials a:visited {
   color: $white;
@@ -254,47 +264,4 @@
 .socials a i {
   font-size: 2rem;
   z-index: 2;
-}
-
-#hitboxes {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: transparent;
-
-  .item {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #fff;
-    position: absolute;
-    border-radius: 50px;
-    cursor: crosshair;
-
-    &:hover {
-      border-color: coral;
-    }
-  }
-}
-
-#effectOverlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 99;
-  pointer-events: none;
-  &>* {
-    position: absolute;
-  }
-}
-
-.wave-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 500px;
-  height: 500px;
 }
