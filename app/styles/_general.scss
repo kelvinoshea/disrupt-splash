@@ -168,13 +168,14 @@
 /*date and locations styles*/
 
 .details {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   position: fixed;
 
   &.left {
     bottom: 0;
     left: 0;
+    transform: translate(-50%, 15%);
   }
   &.right {
     top: 0;
