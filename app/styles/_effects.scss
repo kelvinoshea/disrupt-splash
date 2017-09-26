@@ -1,73 +1,7 @@
-.effect_colourBox {
-  width: 150px;
-  height: 50px;
-  display: flex;
-
-  & > div {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    mix-blend-mode: screen;
-    opacity: 0.5;
-  }
-  .red {
-    background-color: red;
-  }
-  .blue {
-    background-color: blue;
-  }
-  .green {
-    background-color: green;
-  }
-}
-
-
 #TESTING {
   .example-one {
     font-size: 100px;
     @include textGlitch("example-one", 15, white, transparent, #00ffff, #ff00ff, 450, 115);
     line-height: 1.4;
   }
-}
-
-.wave {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  background: $charcoal;
-  opacity: .1;
-  margin-left: -250px;
-  margin-top: -250px;
-  transform-origin: 50% 48%;
-  border-radius: 43%;
-  animation: drift 3000ms infinite linear;
-
-  &.-one {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-
-.wave.-three {
-  width: 70%;
-  height: 70%;
-  animation: drift 5000ms infinite linear;
-}
-
-.wave.-two {
-  animation: drift 7000ms infinite linear;
-  opacity: .1;
-  background: $charcoal;
-}
-
-.wave.-four {
-  animation: drift 7000ms infinite linear;
-  opacity: .1;
-  background: $charcoal;
-}
-
-@keyframes drift {
-  from { transform: rotate(0deg); }
-  from { transform: rotate(360deg); }
 }
