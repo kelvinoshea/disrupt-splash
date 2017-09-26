@@ -19,8 +19,15 @@
   $disrupt-dark-blue: #0f142c;
 
   @font-face {
-    font-family: 'FuturaPT-Heavy';
+    font-family: 'Futura';
     src: url('./fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),  url('./fonts/FuturaPT-Heavy.woff') format('woff'), url('./fonts/FuturaPT-Heavy.ttf')  format('truetype'), url('./fonts/FuturaPT-Heavy.svg#FuturaPT-Heavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'FuturaDisrupt';
+    src: url('./fonts/FuturaDisrupt.eot?#iefix') format('embedded-opentype'),  url('./fonts/FuturaDisrupt.woff') format('woff'), url('./fonts/FuturaDisrupt.ttf')  format('truetype'), url('./fonts/FuturaDisrupt.svg#FuturaDisrupt') format('svg');
     font-weight: normal;
     font-style: normal;
   }
