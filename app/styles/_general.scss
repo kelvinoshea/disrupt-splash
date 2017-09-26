@@ -16,11 +16,29 @@
 
 // title styles
 
-.disruptTitleStatic {
+.disruptTitle {
   font-family: "FuturaPT-Heavy", sans-serif;
   text-transform: uppercase;
   font-size: 10rem;
-  letter-spacing: 10rem;
+  display: flex;
+  width: 100rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .letter {
+    display: flex;
+    justify-content: center;
+  }
+
+  .disruptD {
+    width: 8rem;
+    height: 8rem;
+    background-image: url('../images/d_logo-web.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
 
 // main content styles
@@ -195,6 +213,9 @@
     &:hover i {
       color: $purple;
     }
+  }
+  h2:hover {
+    @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
   }
 }
 
