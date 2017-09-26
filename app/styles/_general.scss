@@ -28,6 +28,7 @@
 .contentContainer {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &.centered {
     justify-content: center;
@@ -170,7 +171,9 @@
 .details {
   // display: flex;
   // flex-wrap: wrap;
-  position: fixed;
+  position: absolute;
+  width: 40%;
+  text-indent: 1rem hanging;
 
   &.left {
     bottom: 0;
