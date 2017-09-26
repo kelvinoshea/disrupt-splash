@@ -18,185 +18,30 @@
   $disrupt-magenta: #ff00fe;
   $disrupt-dark-blue: #0f142c;
 
-
-  /*
-    (TEXT) PARAMS
-    =================
-    1. Namespace
-    2. Intensity
-    3. Text color
-    4. Background color (flat)
-    5. Highlight #1 color
-    6. Highlight #2 color
-    7. Width (px)
-    8. Height (px)
-  */
-
-  @mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
-
-    color: $textColor;
-    //position: relative;
-    $steps: $intensity;
-
-    // Ensure the @keyframes are generated at the root level
-    @at-root {
-      // We need two different ones
-      @for $i from 1 through 2 {
-        @keyframes #{$name}-anim-#{$i} {
-          @for $i from 0 through $steps {
-            #{percentage($i*(1/$steps))} {
-              clip: rect(
-                random($height)+px,
-                $width+px,
-                random($height)+px,
-                0
-              );
-            }
-          }
-        }
-      }
-    }
-    &:before,
-    &:after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: $background;
-      clip: rect(0, 0, 0, 0);
-      opacity: 0.95;
-    }
-    &:after {
-      left: 2px;
-      text-shadow: -1px 0 $highlightColor1;
-      animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
-    }
-    &:before {
-      left: -2px;
-      text-shadow: 2px 0 $highlightColor2;
-      animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
-    }
+  @font-face {
+    font-family: 'Futura';
+    src: url('./fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/FuturaPT-Heavy.woff') format('woff'), url('./fonts/FuturaPT-Heavy.ttf')
+    format('truetype'), url('./fonts/FuturaPT-Heavy.svg#FuturaPT-Heavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
   }
 
-  /*
-    (TEXT) PARAMS
-    =================
-    1. Name of animation
-    2. First colour
-    3. Second color
-    4. Third colour
-    5. Animation direction
-  */
-
-  @mixin buttonBackgroundGlitch($name, $colour1, $colour2, $colour3, $direction) {
-    &:before,
-    &:after {
-      content: '';
-      animation-name: #{$name};
-      animation-fill-mode: both;
-      animation-iteration-count: infinite;
-      animation-duration: 0.4s;
-      animation-timing-function: steps;
-      animation-direction: $direction;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      cursor: pointer;
-      pointer-events: none;
-    }
-
-    @keyframes #{$name} {
-      0% {
-        height: 50%;
-        width: 100%;
-        background-color: $colour1;
-      }
-
-      10% {
-        height: 10%;
-        right: 50%;
-      }
-
-      15% {
-        width: 20%;
-        height: 20%;
-        left: 5%;
-        top: 0%;
-        background-color: $colour3;
-      }
-
-      17% {
-        background-color: $colour2;
-        width: 80%;
-        top: 50%;
-        height: 25%;
-        left: 20%;
-      }
-
-      20% {
-        background-color: none;
-      }
-
-      30% {
-        height: 100%;
-      }
-
-      32% {
-        background: $colour1;
-        bottom: 50%;
-      }
-
-      50% {
-        right: 10%;
-        top: 0;
-        left: 10%;
-        width: 50%;
-      }
-
-      55% {
-        height: 90%;
-        background-color: $colour3;
-      }
-
-      60% {
-        height: 0;
-        width: 0;
-      }
-
-      65% {
-        top: 0;
-        right: 0;
-        width: 20%;
-        height: 50%;
-        background-color: $colour2;
-      }
-
-      69% {
-        left: 80%;
-        height: 5%;
-        width: 5%;
-        background-color: $colour1;
-      }
-
-      72% {
-        bottom: 5%;
-        width: 100%;
-        left: 0;
-        background-color: $colour2;
-      }
-
-      80% {
-        height: 100%;
-        width: 90%;
-        bottom: 0;
-        right: 0;
-        background-color: $colour1;
-      }
-
-      100% {
-        background-color: $colour3;
-      }
-    }
+  @font-face {
+    font-family: 'FuturaDisrupt';
+    src: url('./fonts/FuturaDisrupt.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/FuturaDisrupt.woff') format('woff'),
+    url('./fonts/FuturaDisrupt.ttf')  format('truetype'),
+    url('./fonts/FuturaDisrupt.svg#FuturaDisrupt') format('svg');
+    font-weight: normal;
+    font-style: normal;
   }
+
+  @font-face {
+    font-family: 'disruptheavy';
+    src: url('./fonts/disrupt-webfont.woff2') format('woff2'),
+         url('./fonts/disrupt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

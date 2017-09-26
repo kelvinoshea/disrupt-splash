@@ -16,20 +16,20 @@
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Disrupt 17">
-  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+  <link rel="icon" sizes="192x192" href="images/touch/favicon-192x192.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Disrupt 17">
-  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="images/touch/favicon-152x152.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-  <meta name="msapplication-TileColor" content="#2F3BA2">
+  <meta name="msapplication-TileImage" content="images/touch/favicon-144x144.png">
+  <meta name="msapplication-TileColor" content="#0f142c">
 
   <!-- Color the status bar on mobile devices -->
-  <meta name="theme-color" content="#2F3BA2">
+  <meta name="theme-color" content="#0f142c">
 
   <!-- GENERIC STYLES -->
   <link rel="stylesheet" href="styles/main.css">
@@ -40,84 +40,82 @@
   <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
-  <main id="contentContainer">
-    <h1 class="disrupt left">DISRUPT</h1>
-    <h1 class="disrupt right">DISRUPT</h1>
+  <main class="fullScreenLayout">
 
-    <div id="hitboxes">
-      <div class="item" style="top: 60%; left: 20%;"></div>
-    </div>
+    <div class="contentContainer centered">
 
-    <div class="details">
-      <div class="date">
-        <a href="#" target="_blank">
-          <p>17</p>
-          <p>11</p>
-          <p>17</p>
-        </a>
-      </div>
-      <div class="location">
-        <a href="https://maps.google.com/?q=QUT+Kelvin+Grove+Campus" target="_blank">
-          <p>QUT KELVIN GROVE</p>
-        </a>
-      </div>
-    </div>
-
-    <div class="registerInterest">
-      <form id="formEmail">
-        <!-- NOTE: Add hidden reCAPTCHA for email inputs to weed out bots n shit. -->
-        <!-- https://developers.google.com/recaptcha/docs/invisible -->
-        <!-- <div class="g-recaptcha"
-          data-sitekey="6Lel-zAUAAAAAKk2In1vbqXTFk6j_Cv-XWBlvvZq"
-          data-callback="onSubmit"
-          data-size="invisible">
-      </div> -->
-        <div class="inputContainer">
-          <input id="inp_email" class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
-              <span class="buttonText" data-text="Register your interest">Register your interest</span>
+      <div class="disrupt details right">
+        <div class="date">
+          <a href="#" target="_blank">
+            <h2>22 11 2017</h2>
+          </a>
         </div>
-        <div class="submitButtonContainer">
-          <div class="submitButton hidden">
-            <button type="submit" for="inp_email">
-              register
-            </button>
+        <div class="location">
+          <a href="https://maps.google.com/?q=QUT+Kelvin+Grove+Campus" target="_blank">
+            <h2 data-text="29 MUSK AVENUE AND VICTORIA PARK RD, KELVIN GROVE">29 MUSK AVENUE AND VICTORIA PARK RD, KELVIN GROVE</h2>
+          </a>
+        </div>
+      </div>
+
+      <div class="disrupt details left">
+        <h2 >Interactive & visual design graduare exhibition</h2>
+      </div>
+
+      <div class="disruptTitle">
+        <span class="letter">D</span>
+        <span class="letter">I</span>
+        <span class="letter">S</span>
+        <span class="letter">R</span>
+        <span class="letter">U</span>
+        <span class="letter">P</span>
+        <span class="letter">T</span>
+      </div>
+
+      <div class="registerInterest">
+        <form id="formEmail">
+          <!-- NOTE: Add hidden reCAPTCHA for email inputs to weed out bots n shit. -->
+          <!-- https://developers.google.com/recaptcha/docs/invisible -->
+          <!-- <div class="g-recaptcha"
+            data-sitekey="6Lel-zAUAAAAAKk2In1vbqXTFk6j_Cv-XWBlvvZq"
+            data-callback="onSubmit"
+            data-size="invisible">
+        </div> -->
+          <div class="inputContainer">
+            <input id="inp_email" class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
+                <span class="buttonText" data-text="Register your interest">Register your interest</span>
           </div>
-        </div>
-      </form>
-    </div>
-    <div class="socials">
-      <a href="https://www.facebook.com/" class="facebook-link" target="_blank">
-        <i class="fa fa-facebook" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.instagram.com/" class="instagram-link" target="_blank">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </a>
-    </div>
-
-    <div id="TESTING" style="position: absolute; top: 20%; left: 20%;">
-      <div class="example-one" data-text="GLITCH">GLITCH</div>
+          <div class="submitButtonContainer">
+            <div class="submitButton hidden">
+              <button type="submit" for="inp_email">
+                register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <div class="wave-container">
-      <div class="wave -one"></div>
-      <div class="wave -two"></div>
-      <div class="wave -three"></div>
-      <div class="wave -four"></div>
-    </div>
+    <footer>
+      <div class="corporate">
+        <a href="https://www.qut.edu.au/" class="icon-link qut-icon" target="_blank"></a>
+      </div>
+      <div class="socials">
+        <a href="https://www.facebook.com/" class="icon-link facebook" target="_blank">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/" class="icon-link instagram" target="_blank">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
 
-    <div class="test-bg-glitch">
-
-    </div>
-
-    <div id="effectOverlay">
-      <div class="effect_colourBox hidden" style="top: 50%; right: 50%;"><div class="red"></div><div class="green"></div><div class="blue"></div></div>
-    </div>
 
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- build:js scripts/main.min.js -->
   <script src="scripts/main.js"></script>
+  <script src="scripts/disrupt.js"></script>
   <script src="scripts/backgroundEffect.js"></script>
   <script src="scripts/serviceWorker.js"></script>
   <!-- endbuild -->

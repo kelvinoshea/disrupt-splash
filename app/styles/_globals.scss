@@ -34,9 +34,23 @@ a {
   }
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Saira Condensed', sans-serif;
+  letter-spacing: 0.5rem;
+  line-height: 1.7;
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 2rem;
+  align-items: center;
 }
 
 .hidden {

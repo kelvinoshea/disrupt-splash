@@ -1,54 +1,56 @@
 /* GENERAL
 ------------------------------------------------------------------------------------------------- */
 
-#contentContainer {
+.fullScreenLayout {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(270deg, #101010, #151515, #202020, #252525);
-  background-size: 800% 800%;
-
-  animation: AnimationName 90s ease infinite;
+  background-image: url(../images/bigbg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.disrupt {
-  color: $white;
-  line-height: 1;
-  position: fixed;
-  letter-spacing: 1rem;
-  font-weight: 700;
-  transition: transform .6s ease-out;
-  opacity: .1;
+// title styles
+
+.disruptTitle {
+  font-family: "disruptheavy", sans-serif;
+  text-transform: uppercase;
+  font-size: 10rem;
+  display: flex;
+  width: 100rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 3rem 0;
+
+  .letter {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-.disrupt.left {
-  font-size: 15vw;
-  bottom: 0;
-  left: 0;
-  transform: translate(-50%, 15%);
-  /*
-  * Update this in js resetDisrupt
-  */
+// main content styles
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.disrupt.right {
-  font-size: 20vw;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -15%);
-  /*
-  * Update this in js resetDisrupt
-  */
-}
+
+// form styles
 
 .registerInterest {
-  content: '';
   display: block;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 10;
-  transform: translate(-50%, -50%);
   width: 100%;
 }
 
@@ -59,6 +61,7 @@
   min-width: 320px;
   margin: auto;
   overflow: hidden;
+
 }
 
 .registerInterest .inputContainer input {
@@ -71,7 +74,8 @@
   border-radius: 0;
   cursor: pointer;
   width: 25rem;
-  color: rgba(0,0,0,0);
+  // color: rgba(0,0,0,0);
+  font-weight: 700;
   text-transform: uppercase;
   transition: width .2s ease-in-out, color .2s ease-in-out 0s;
 }
@@ -92,6 +96,7 @@
   font-size: 1.4rem;
   font-weight: 500;
   text-align: center;
+  color: #fff;
 }
 
 .registerInterest .inputContainer input:focus::placeholder,
@@ -120,7 +125,8 @@
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
-  @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  // @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
 }
 
 .submitButtonContainer {
@@ -136,11 +142,11 @@
     overflow: hidden;
     padding: 0.25rem;
     z-index: 2;
-    @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+    @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $disrupt-green, alternate);
     cursor: pointer;
 
     &:hover, &:focus {
-      background: $bright-green;
+      background: $disrupt-green;
       box-shadow: 0px 1px 1px $dull-green;
 
       button {
@@ -161,7 +167,7 @@
     cursor: pointer;
 
     &:active {
-      color: $bright-green;
+      color: $disrupt-green;
     }
   }
 }
@@ -170,27 +176,25 @@
 /*date and locations styles*/
 
 .details {
-  display: flex;
-  flex-wrap: wrap;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin-left: 2rem;
-  margin-top: 1rem;
-  .date, .location {
-    margin-top: 1rem;
-    padding: 0.25rem;
-    position: relative;
-    overflow: hidden;
+  // display: flex;
+  // flex-wrap: wrap;
+  position: absolute;
+  width: 40%;
+  text-indent: 1rem hanging;
+
+  &.left {
+    bottom: 0;
+    left: 0;
+    transform: translate(-70%, 30%);
+    text-align: right;
+  }
+  &.right {
+    top: 0;
+    right: 0;
+    transform: translate(60%, -120%);
   }
   i {
     margin-right: 0.8rem;
-  }
-  .date {
-    margin-right: 2.5rem;
-  }
-  .date p {
-    margin-right: 0.5rem;
   }
   a {
     display: flex;
@@ -199,21 +203,20 @@
       color: $purple;
     }
   }
+  h2:hover {
+    transition: opacity .2s ease-in-out .2s;
+    @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  }
 }
-
-
 
 /*social media link styles*/
 
 .socials {
   display: flex;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 2rem;
+  justify-content: space-around;
 }
 
-.socials a {
+.icon-link {
   width: 3.8rem;
   height: 3.8rem;
   border: 0.1rem solid $white;
@@ -227,27 +230,36 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
+
+  &.facebook {
+    &:hover {
+      @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
+  &.instagram {
+    &:hover {
+      @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
+  &.qut-icon {
+    background-image: url(../images/qut.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+  }
 }
 
-.facebook-link {
-  &:hover {
-    @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
-  }
-
-  &:active {
-    background: $white;
-  }
-}
-
-.instagram-link {
-  &:hover {
-    @include buttonBackgroundGlitch(instagramAnim, $red, $yellow, $neon-pink, alternate-reverse);
-  }
-
-  &:active {
-    background: $white;
-  }
-}
 
 .socials a:visited {
   color: $white;
@@ -256,47 +268,4 @@
 .socials a i {
   font-size: 2rem;
   z-index: 2;
-}
-
-#hitboxes {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: transparent;
-
-  .item {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #fff;
-    position: absolute;
-    border-radius: 50px;
-    cursor: crosshair;
-
-    &:hover {
-      border-color: coral;
-    }
-  }
-}
-
-#effectOverlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 99;
-  pointer-events: none;
-  &>* {
-    position: absolute;
-  }
-}
-
-.wave-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 500px;
-  height: 500px;
 }
