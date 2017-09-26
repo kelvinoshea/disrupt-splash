@@ -40,7 +40,7 @@
   <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
-  <main id="contentContainer">
+  <main class="fullScreenLayout">
 
     <div class="details">
       <div class="date">
@@ -57,28 +57,35 @@
       </div>
     </div>
 
-    <div class="registerInterest">
-      <form id="formEmail">
-        <!-- NOTE: Add hidden reCAPTCHA for email inputs to weed out bots n shit. -->
-        <!-- https://developers.google.com/recaptcha/docs/invisible -->
-        <!-- <div class="g-recaptcha"
-          data-sitekey="6Lel-zAUAAAAAKk2In1vbqXTFk6j_Cv-XWBlvvZq"
-          data-callback="onSubmit"
-          data-size="invisible">
-      </div> -->
-        <div class="inputContainer">
-          <input id="inp_email" class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
-              <span class="buttonText" data-text="Register your interest">Register your interest</span>
-        </div>
-        <div class="submitButtonContainer">
-          <div class="submitButton hidden">
-            <button type="submit" for="inp_email">
-              register
-            </button>
+    <div class="contentContainer centered">
+      <div class="disruptTitle">
+        <h1 id="title" class="disrupt dsrpt-rgb-shift loop" style="visibility: hidden;">DISRUPT</h1>
+      </div>
+
+      <div class="registerInterest">
+        <form id="formEmail">
+          <!-- NOTE: Add hidden reCAPTCHA for email inputs to weed out bots n shit. -->
+          <!-- https://developers.google.com/recaptcha/docs/invisible -->
+          <!-- <div class="g-recaptcha"
+            data-sitekey="6Lel-zAUAAAAAKk2In1vbqXTFk6j_Cv-XWBlvvZq"
+            data-callback="onSubmit"
+            data-size="invisible">
+        </div> -->
+          <div class="inputContainer">
+            <input id="inp_email" class="email" autocomplete="off" value="" type="text" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" name="email" placeholder="Type your email address" required>
+                <span class="buttonText" data-text="Register your interest">Register your interest</span>
           </div>
-        </div>
-      </form>
+          <div class="submitButtonContainer">
+            <div class="submitButton hidden">
+              <button type="submit" for="inp_email">
+                register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+
     <div class="socials">
       <a href="https://www.facebook.com/" class="facebook-link" target="_blank">
         <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -97,7 +104,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- build:js scripts/main.min.js -->
   <script src="scripts/main.js"></script>
-  <script src="scripts/backgroundEffect.js"></script>
+  <script src="scripts/disrupt.js"></script>
   <script src="scripts/serviceWorker.js"></script>
   <!-- endbuild -->
 
