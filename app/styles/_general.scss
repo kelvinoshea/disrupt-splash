@@ -5,16 +5,46 @@
   position: relative;
   height: 100vh;
   width: 100vw;
+  background-image: url(../images/bigbg.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+// title styles
+
+.disruptTitleStatic {
+  font-family: "Futura", sans-serif;
+  text-transform: uppercase;
+  font-size: 10rem;
+  letter-spacing: 7.5rem;
+}
+
+// main content styles
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+// form styles
+
 .registerInterest {
-  content: '';
   display: block;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 10;
-  transform: translate(-50%, -50%);
+  // position: fixed;
+  // left: 50%;
+  // top: 50%;
+  // z-index: 10;
+  // transform: translate(-50%, -50%);
   width: 100%;
 }
 
