@@ -6,7 +6,7 @@
   height: 100vh;
   width: 100vw;
   background-image: url(../images/bigbg.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -171,8 +171,6 @@
   display: flex;
   flex-wrap: wrap;
   position: fixed;
-  margin-left: 2rem;
-  margin-top: 1rem;
 
   &.left {
     bottom: 0;
