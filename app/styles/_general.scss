@@ -27,6 +27,17 @@
   }
 }
 
+#noise-overlay {
+  position: absolute;
+  opacity: 0.15;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/noise.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 // title styles
 
 .disruptTitle {
