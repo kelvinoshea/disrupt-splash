@@ -5,13 +5,26 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-image: url(../images/bigbg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  // background-image: url(../images/bigbg.jpg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  background-color: #0f142c;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#rgb-orb {
+  position: absolute;
+  width: 92vh;
+  height: 92vh;
+  border-radius: 46vh;
+  overflow: hidden;
+
+  img {
+    height: 92vh;
+  }
 }
 
 // title styles
