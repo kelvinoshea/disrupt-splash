@@ -509,7 +509,7 @@ class DISRUPT {
 
           // Get canvas bounds
           let canvBounds = canvas.getBoundingClientRect()
-          let maxOffset = 10
+          let maxOffset = 15
 
           let GLITCHBOX = function () {
             this.fps = 60
