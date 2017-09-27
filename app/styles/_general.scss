@@ -19,6 +19,8 @@
   position: absolute;
   width: 92vh;
   height: 92vh;
+  top: 4vh;
+  left: calc(50vw - 46vh);
   border-radius: 46vh;
   overflow: hidden;
 
@@ -31,6 +33,8 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
+  top: 0;
+  left: 0;
 
   img {
     position: absolute;
