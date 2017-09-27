@@ -150,7 +150,7 @@
   line-height: 1.4rem;
   margin-top: .1rem;
   // @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-  @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+  // @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
 }
 
 .submitButtonContainer {
