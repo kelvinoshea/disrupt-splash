@@ -82,10 +82,14 @@ $(function() {
 
         },
         success: function(result) {
-          console.log('Success');
-          $('.email').next().attr('data-text', 'Success!').html('Success!');
-          $('.email').css('pointer-events', 'none');
-
+          console.log(result);
+          if (result == "1") {
+            console.log('Success');
+            $('.email').next().attr('data-text', 'Success!').html('Success!');
+            $('.email').css('pointer-events', 'none');
+          } else {
+            $('.email').next().attr('data-text', 'Try Again.').html('Try Again.');
+          }
         },
         error: function(error) {
           console.log('error');
