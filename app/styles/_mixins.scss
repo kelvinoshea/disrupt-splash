@@ -76,7 +76,7 @@
     animation-fill-mode: both;
     animation-iteration-count: infinite;
     animation-duration: 0.4s;
-    animation-timing-function: steps;
+    animation-timing-function: steps(3);
     animation-direction: $direction;
     position: absolute;
     bottom: 0;

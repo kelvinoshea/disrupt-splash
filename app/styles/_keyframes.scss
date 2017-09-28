@@ -5,3 +5,12 @@
     50%{background-position:0% 100%}
     100%{background-position:93% 0%}
 }
+
+@keyframes bg-noise-rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

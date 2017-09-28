@@ -5,13 +5,47 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-image: url(../images/bigbg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  // background-image: url(../images/bigbg.jpg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  background-color: #0f142c;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#rgb-orb {
+  position: absolute;
+  width: 92vh;
+  height: 92vh;
+  top: 4vh;
+  left: calc(50vw - 46vh);
+  border-radius: 46vh;
+  overflow: hidden;
+
+  img {
+    height: 92vh;
+  }
+}
+
+#noise-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0.15;
+    min-width: 100vw;
+    min-height: 100vh;
+    transform: translate(-50%, -50%);
+    animation: bg-noise-rotate 0.5s steps(4, end) 0s infinite;
+  }
 }
 
 // title styles
@@ -126,7 +160,7 @@
   line-height: 1.4rem;
   margin-top: .1rem;
   // @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-  @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
+  // @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
 }
 
 .submitButtonContainer {
