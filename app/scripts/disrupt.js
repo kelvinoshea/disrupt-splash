@@ -708,8 +708,6 @@ class DISRUPT {
   /* DISRUPTION FUNCTIONS */
 
   addDisruptions () {
-    let me = this
-
     // Scan through DOM and find disruptable elements
     let disruptables = Array.from(document.getElementsByClassName(this.targetClass))
 
@@ -743,10 +741,19 @@ class DISRUPT {
           disruption.image = img
           disruption.canvas = canvas
 
-          me.disruptables[disruption.id] = disruption
+          this.disruptables[disruption.id] = disruption
 
-          // Position canvas
-          this.positionCanvas(elem, disruption.canvas)
+          // Position canvas, handling special case for ORB
+          if (elem.id === 'rgb-orb') {
+            disruption.canvas.style.position = 'absolute'
+            disruption.canvas.style.top = '50%'
+            disruption.canvas.style.left = '50%'
+            disruption.canvas.style.width = '92vmin'
+            disruption.canvas.style.height = '92vmin'
+            disruption.canvas.style.transform = 'translate(-50%, -50%)'
+          } else {
+            this.positionCanvas(elem, disruption.canvas)
+          }
           elem.parentNode.insertBefore(disruption.canvas, elem)
 
           // Resolve after image has loaded
@@ -756,7 +763,7 @@ class DISRUPT {
     })
 
     Promise.all(canvasLoads).then(() => {
-      me.triggerDisrupt()
+      this.triggerDisrupt()
     })
   }
 
@@ -839,12 +846,6 @@ window.DISRUPT = new DISRUPT()
 
 // TODO: add ability to wait until revealed by scroll
 window.DISRUPT.addDisruptions()
-
-var redrawBackground = debounce(function() {
-	// Redraw me yo while not destroying the DOM or performance
-}, 250);
-
-window.addEventListener('resize', redrawBackground);
 
 },{"../vendor/html2canvas.min.js":2}],2:[function(require,module,exports){
 (function (global){
