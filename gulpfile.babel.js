@@ -94,7 +94,7 @@ gulp.task('styles_dev', () => {
     .pipe($.sass({
       precision: 10
     }).on('error', $.sass.logError))
-    // .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     //.pipe($.if('*.css', $.cssnano()))
@@ -111,6 +111,7 @@ pump([
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/main.js',
+      './app/scripts/disrupt.js',
       './app/scripts/backgroundEffect.js',
       './app/scripts/serviceWorker.js'
     ]),
