@@ -840,6 +840,12 @@ window.DISRUPT = new DISRUPT()
 // TODO: add ability to wait until revealed by scroll
 window.DISRUPT.addDisruptions()
 
+var redrawBackground = debounce(function() {
+	// Redraw me yo while not destroying the DOM or performance
+}, 250);
+
+window.addEventListener('resize', redrawBackground);
+
 },{"../vendor/html2canvas.min.js":2}],2:[function(require,module,exports){
 (function (global){
 /*
