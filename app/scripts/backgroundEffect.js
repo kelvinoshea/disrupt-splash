@@ -54,8 +54,8 @@ function setDisruptOffset () {
   OFFSETS.dy += (OFFSETS.y - OFFSETS.dy) * OFFSETS.spd
 
   // Offset elements with css
-  document.querySelector('.details.left').style.transform = getTransform()
-  document.querySelector('.details.right').style.transform = getTransform(true)
+  document.querySelector('.details.left').style.transform = getTransform(true)
+  document.querySelector('.details.right').style.transform = getTransform()
 
   window.requestAnimationFrame(setDisruptOffset)
 }
