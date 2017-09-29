@@ -135,10 +135,10 @@ function debounce(func, wait, immediate) {
  * @param {number} intensity - Intensity of symbols added.
  * @param {character[]} [chars] - Characters to add randomly.
  */
-function documentTitleDisrupter(delay, restore, intensity) {
+function documentTitleDisrupter(delay, restore, intensity, chars) {
   var org = document.title;
   setInterval(function() {
-      document.title = org.shuffle().scramble(intensity);
+      document.title = org.shuffle().scramble(intensity, chars);
       setTimeout(function(){
         document.title = org;
       }, restore);
