@@ -111,6 +111,9 @@ $(function() {
     var buttonTXT = input.next();
     buttonTXT.attr('data-text', "That's not an Email").html("That's not an Email");
   }
+
+  // Hide the loader.
+  $("#loader").hide();
 });
 
 function debounce(func, wait, immediate) {
