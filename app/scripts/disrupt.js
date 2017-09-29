@@ -14,6 +14,11 @@ class Mouse {
       this.x = e.clientX
       this.y = e.clientY
     })
+
+    window.addEventListener('mouseout', e => {
+      this.x = window.innerWidth / 2
+      this.y = window.innerHeight / 2
+    })
   }
 
   get pos () {

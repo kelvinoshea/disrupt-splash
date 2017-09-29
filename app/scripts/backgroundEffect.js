@@ -22,7 +22,7 @@ var OFFSETS = {
   dy: 0,
   cx: window.innerWidth / 2,
   cy: window.innerHeight / 2,
-  maxOffset: 16,
+  maxOffset: 15,
   spd: 0.1
 }
 
