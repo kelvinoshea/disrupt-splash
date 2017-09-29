@@ -25,6 +25,13 @@ gulp.task('images', () =>
     .pipe($.size({title: 'images'}))
 );
 
+// Handle Fonts
+gulp.task('fonts', () =>
+  gulp.src('app/fonts/**/*')
+    .pipe(gulp.dest('dist/fonts'))
+    .pipe($.size({title: 'fonts'}))
+);
+
 // Copy all files at the root level (app)
 gulp.task('copy', () =>
   gulp.src([
@@ -195,7 +202,7 @@ gulp.task('serve:dist', ['deploy'], () =>
 gulp.task('deploy', ['clean'], cb =>
   runSequence(
     'styles',
-    ['html', 'scripts', 'images', 'copy'],
+    ['html', 'scripts', 'images', 'copy', 'fonts'],
     'generate-service-worker',
     cb
   )
@@ -204,7 +211,7 @@ gulp.task('deploy', ['clean'], cb =>
 // Run PageSpeed Insights
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
-  pagespeed('example.com', {
+  pagespeed('http://d1srup7.com', {
     strategy: 'mobile'
   }, cb)
 );
@@ -237,6 +244,7 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
+      `${rootDir}/fonts/*`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.

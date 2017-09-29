@@ -18,7 +18,7 @@
   $disrupt-magenta: #ff00fe;
   $disrupt-dark-blue: #0f142c;
 
-  @font-face {
+  /* @font-face {
     font-family: 'Futura';
     src: url('./fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
     url('./fonts/FuturaPT-Heavy.woff') format('woff'), url('./fonts/FuturaPT-Heavy.ttf')
@@ -35,13 +35,12 @@
     url('./fonts/FuturaDisrupt.svg#FuturaDisrupt') format('svg');
     font-weight: normal;
     font-style: normal;
-  }
+  } */
 
   @font-face {
     font-family: 'disruptheavy';
-    src: url('./fonts/disrupt-webfont.woff2') format('woff2'),
-         url('./fonts/disrupt-webfont.woff') format('woff');
+    src: url('../fonts/disrupt-webfont.woff2') format('woff2'),
+         url('../fonts/disrupt-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
