@@ -9,6 +9,8 @@ $(function() {
       )
     );
 
+    // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
+    documentTitleDisrupter(2000, 1000, 3);
 
   $('#hitboxes .item').hover(function(event) {
     // IN
@@ -125,3 +127,37 @@ function debounce(func, wait, immediate) {
 		if (callNow) func.apply(context, args);
 	};
 };
+
+/**
+ * Shuffle the Document Title on loop.
+ * @param {number} delay - ms tnterval to Scramble on .
+ * @param {number} restore - ms to display the scrambled text for.
+ * @param {number} intensity - Intensity of symbols added.
+ + @param {character[]} [chars] - Characters to add randomly.
+ */
+function documentTitleDisrupter(delay, restore, intensity) {
+  var org = document.title;
+  setInterval(function() {
+      var shuffled = org.split('').sort(function(){return 0.5-Math.random()}).join('').scramble(intensity);
+      document.title = shuffled;
+      setTimeout(function(){
+        document.title = org;
+      }, restore);
+  }, delay);
+};
+
+/**
+ * Add randomly add random chars to a string
+ * @param {number} intensity - Intensity of symbols added.
+ + @param {character[]} [chars] - Characters to add randomly.
+ */
+String.prototype.scramble = function(n, char) {
+  var arr = this.split(''),
+      char= char || ['!','@','#','$','%','^','&','*','(',')','_','-','+','=','|',':',';',"'",'"','<','>','.',',','?','\\','/','{','}'];
+
+  while(n--) {
+    arr.splice(Math.floor(Math.random() * (arr.length+1)), 0, char[Math.floor(Math.random() * (char.length+1))]);
+  }
+
+  return arr.join('');
+}
