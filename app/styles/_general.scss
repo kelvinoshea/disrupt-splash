@@ -216,20 +216,19 @@
 .details {
   // display: flex;
   // flex-wrap: wrap;
-  position: absolute;
-  width: 40%;
+  position: fixed;
+  width: 30%;
+  max-width: 400px;
   text-indent: 1rem hanging;
 
   &.left {
-    bottom: 0;
-    left: 0;
-    transform: translate(-70%, 30%);
+    top: 60%;
+    right: 70%;
     text-align: right;
   }
   &.right {
-    top: 0;
-    right: 0;
-    transform: translate(60%, -120%);
+    bottom: 66%;
+    left: 70%;
   }
   i {
     margin-right: 0.8rem;

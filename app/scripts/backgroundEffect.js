@@ -1,29 +1,59 @@
 /* MOUSE EVENT PARALLAX
 ------------------------------------------------------------------------------------------------- */
 
-window.onload = function() {
-  window.onmousemove = function(event) {
-    moveDisrupt(event);
-  }
+window.addEventListener('load', addDisruptListeners)
 
-  window.onmouseout = function() {
-    resetDisrupt();
-  }
+function addDisruptListeners () {
+  // Attach to mousemove
+  window.addEventListener('mousemove', setDisruptTarget)
+  window.addEventListener('touchmove', setDisruptTarget)
 
-  window.addEventListener("touchmove", function(event) {
-    moveDisrupt(event);
-  });
-};
+  // Reset when mouse leaves
+  window.addEventListener('mouseout', resetDisruptTarget)
 
-function moveDisrupt(event) {
-  var posX = Math.floor((event.pageX - (window.innerWidth / 2)) / window.innerWidth * 15);
-  var posY = Math.floor((event.pageY - (window.innerHeight / 2)) / window.innerHeight * 15);
-
-  document.querySelector('.details.right').style.transform = "translate(calc(60% + "+ -posX +"px), calc(-120% + "+ -posY +"px))";
-  document.querySelector('.details.left').style.transform = "translate(calc(-70% + "+ posX +"px), calc(30% + "+ posY +"px))";
+  // Start animation
+  window.requestAnimationFrame(setDisruptOffset)
 }
 
-function resetDisrupt(){
-  document.querySelector('.details.left').style.transform = "translate(-70%, 30%)";
-  document.querySelector('.details.right').style.transform = "translate(60%, -120%)";
+var OFFSETS = {
+  x: 0,
+  y: 0,
+  dx: 0,
+  dy: 0,
+  cx: window.innerWidth / 2,
+  cy: window.innerHeight / 2,
+  maxOffset: 15,
+  spd: 0.1
+}
+
+function setDisruptTarget (evt) {
+  // Get mouse offset from center of screen
+  let xOff = (OFFSETS.cx - evt.clientX) / OFFSETS.cx
+  let yOff = (OFFSETS.cy - evt.clientY) / OFFSETS.cy
+
+  // Set target
+  OFFSETS.x = xOff * OFFSETS.maxOffset
+  OFFSETS.y = yOff * OFFSETS.maxOffset
+}
+
+function resetDisruptTarget (evt) {
+  OFFSETS.x = 0
+  OFFSETS.y = 0
+}
+
+function getTransform (negative = false) {
+  let neg = (negative ? -1 : 1)
+  return `translate(${neg * Math.round(OFFSETS.dx)}px, ${neg * Math.round(OFFSETS.dy)}px)`
+}
+
+// Move offset towards target
+function setDisruptOffset () {
+  OFFSETS.dx += (OFFSETS.x - OFFSETS.dx) * OFFSETS.spd
+  OFFSETS.dy += (OFFSETS.y - OFFSETS.dy) * OFFSETS.spd
+
+  // Offset elements with css
+  document.querySelector('.details.left').style.transform = getTransform(true)
+  document.querySelector('.details.right').style.transform = getTransform()
+
+  window.requestAnimationFrame(setDisruptOffset)
 }
