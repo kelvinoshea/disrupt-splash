@@ -41,8 +41,6 @@ function resetDisruptTarget (evt) {
   OFFSETS.y = 0
 }
 
-const sign = n => n / Math.abs(n)
-
 function getTransform (negative = false) {
   let neg = (negative ? -1 : 1)
   return `translate(${neg * Math.round(OFFSETS.dx)}px, ${neg * Math.round(OFFSETS.dy)}px)`
