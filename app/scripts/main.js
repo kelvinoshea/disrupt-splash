@@ -133,13 +133,12 @@ function debounce(func, wait, immediate) {
  * @param {number} delay - ms tnterval to Scramble on .
  * @param {number} restore - ms to display the scrambled text for.
  * @param {number} intensity - Intensity of symbols added.
- + @param {character[]} [chars] - Characters to add randomly.
+ * @param {character[]} [chars] - Characters to add randomly.
  */
 function documentTitleDisrupter(delay, restore, intensity) {
   var org = document.title;
   setInterval(function() {
-      var shuffled = org.split('').sort(function(){return 0.5-Math.random()}).join('').scramble(intensity);
-      document.title = shuffled;
+      document.title = org.shuffle().scramble(intensity);
       setTimeout(function(){
         document.title = org;
       }, restore);
@@ -149,7 +148,7 @@ function documentTitleDisrupter(delay, restore, intensity) {
 /**
  * Add randomly add random chars to a string
  * @param {number} intensity - Intensity of symbols added.
- + @param {character[]} [chars] - Characters to add randomly.
+ * @param {character[]} [chars] - Characters to add randomly.
  */
 String.prototype.scramble = function(n, char) {
   var arr = this.split(''),
@@ -160,4 +159,11 @@ String.prototype.scramble = function(n, char) {
   }
 
   return arr.join('');
+}
+
+/**
+ * Randomly reorder the characters in a string
+ */
+String.prototype.shuffle = function() {
+  return this.split('').sort(function(){return 0.5-Math.random()}).join('');
 }
