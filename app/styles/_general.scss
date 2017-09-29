@@ -61,8 +61,11 @@
   position: relative;
   margin: 3rem 0;
   letter-spacing: 10rem;
-  @include textGlitch("disrupt-title", 10, white, transparent, #00ffff, #ff00ff, 1000, 115);
+  &:hover {
+    @include textGlitch("disrupt-title", 10, white, transparent, #00ffff, #ff00ff, 1000, 115);
+  }
 }
+
 
 // main content styles
 
