@@ -6,6 +6,7 @@
   Kelvin O'Shea -- Developer
   Mitchell Williams -- Developer
   Zachary McTague -- Developer
+  Samuel Dale -- Devoloper
 
 # THANKS
 
@@ -13,4 +14,4 @@
 
 # TECHNOLOGY COLOPHON
 
-  HTML5, CSS3, NodeJS, JS
+  HTML5, CSS3, NodeJS, JS, Canvas
