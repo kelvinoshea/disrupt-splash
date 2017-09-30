@@ -55,8 +55,12 @@ class DB_PDO_MySQL
             $result = $sql->fetchAll();
             return $result;
         } catch (PDOException $e) {
+          if ($e->getCode() == 1062) {
+            echo 'duplicate';
+          } else {
             http_response_code(501);
             echo 'MySQL: ' . $e->getMessage();
+          }
         }
     }
 }
