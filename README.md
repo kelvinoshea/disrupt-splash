@@ -1,8 +1,8 @@
 <h1 align="center">
   <br>
-  <a href="https://d1rup7.com"><img src="#" alt="Markdownify" width="200"></a>
+  <a href="https://d1rup7.com"><img src="#" alt="Disrupt17" width="200"></a>
   <br>
-  Disrupt17 Splash Page
+  d1rup7.com Splash Page
   <br>
 </h1>
 
@@ -23,19 +23,17 @@ Feel free to peruse our code and we hope that you can find inspiration or guiden
 
 ## Credits
 
-This software uses code from several open source packages.
+This website uses code and technologies from several open source packages.
 
-- [Electron](http://electron.atom.io/)
 - [Node.js](https://nodejs.org/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
 
 ## Authors
 
 * **Mitchell Williams** - *Developer* - Github [@mitchello77](https://github.com/mitchello77) ;&middot [mitchell-williams.com.au](https://mitchell-williams.com.au)
+* **Kelvin O'Shea** - *Developer* - Github [@kelvinoshea](https://github.com/kelvinoshea) ;&middot [kelvinoshea.com](http://kelvinoshea.com/) &middot Twitter [@](#)
+* **Samuel Dale** - *Developer* - Github [@smhdale](https://github.com/smhdale) ;&middot [smhdale.com.au](http://smhdale.com.au/)
+* **Zachary McTague** - *Developer* - Github [@zacharymctague](https://github.com/zacharymctague) ;&middot [zacharymctague.com](http://smhdale.com.au/)
 
 See also the list of [contributors](https://github.com/kelvinoshea/disrupt-splash/contributors) who participated in this project.
 
