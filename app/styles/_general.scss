@@ -253,16 +253,13 @@
   i {
     margin-right: 0.8rem;
   }
-  a {
-    display: flex;
-    align-items: center;
-    &:hover i {
-      color: $purple;
-    }
-  }
   h2:hover {
     transition: opacity .2s ease-in-out .2s;
     @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  }
+
+  .date {
+    text-align: right;
   }
 }
 
