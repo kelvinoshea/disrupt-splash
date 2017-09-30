@@ -291,6 +291,16 @@
     }
   }
 
+  &.instagram {
+    &:hover {
+      @include buttonBackgroundGlitch(instagramAnim, $bright-green, $purple, $neon-cyan, alternate-reverse);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
   &.qut-icon {
     background-image: url(../images/qut.svg);
     background-position: center;
