@@ -300,11 +300,6 @@
     margin-right: 0.8rem;
   }
   h2{
-    &:hover {
-      transition: opacity .2s ease-in-out .2s;
-      @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-    }
-
     @include phone {
       font-size: 12px;
     }
@@ -316,6 +311,13 @@
   }
   .location {
     text-align-last: center;
+    a h2 {
+      position: relative;
+      &:hover {
+        //transition: opacity .2s ease-in-out .2s;
+        @include textGlitch("location", 8, $white, transparent, #00ffff, #ff00ff, 400, 115);
+      }
+    }
   }
 }
 
