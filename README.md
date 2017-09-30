@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://d1rup7.com"><img src="https://raw.githubusercontent.com/kelvinoshea/disrupt-splash/master/_readme-assets/logo.png" alt="Disrupt17" width="200"></a>
+  <a href="https://d1rup7.com"><img src="https://raw.githubusercontent.com/kelvinoshea/disrupt-splash/master/_readme-assets/logo.png" alt="Disrupt17" width="250"></a>
   <br>
   d1rup7.com Splash Page
   <br>
