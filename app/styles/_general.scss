@@ -249,9 +249,15 @@
   position: fixed;
   width: 30%;
   max-width: 400px;
+  box-sizing: border-box;
 
   @include tablet {
-    width: 100%
+    width: 100%;
+  }
+
+  @include phone {
+    font-size: 1rem;
+    padding: 1rem;
   }
 
   &.left {
@@ -263,6 +269,12 @@
       left: 5%;
       top: 70%;
     }
+
+    @include phone {
+      left: 0;
+      top: 0;
+      text-align: left;
+    }
   }
   &.right {
     bottom: 66%;
@@ -270,6 +282,12 @@
 
     @include tablet {
       left: 40%;
+    }
+
+    @include phone {
+      left: 0;
+      top: 5%;
+
     }
   }
   i {
