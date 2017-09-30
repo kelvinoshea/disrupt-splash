@@ -30,14 +30,24 @@ $(function() {
   var loadCheck = setInterval(function() {
     if (loadCount > 20) {
       // somehow stuff has not loaded after 10 seconds?
-      $("#loader").hide();
+      loader_hide()
       clearInterval(loadCheck);
     }
     if (allTrue(loaded)) {
-      $("#loader").hide();
+      loader_hide()
       clearInterval(loadCheck);
     }
     loadCount++;
   }, 500);
   function allTrue(obj) {for(var o in obj) {if(!obj[o]) return false;}return true;}
+
+  // Loader FUNCTIONS
+
+  function loader_hide() {
+    $("#loader").hide();
+  }
+
+  function loader_show() {
+    $("#loader").show();
+  }
 });
