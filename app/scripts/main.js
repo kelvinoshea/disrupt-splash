@@ -97,10 +97,10 @@ $(function() {
         },
         success: function(result) {
           if (result == "1") {
-            $('.email').next().attr('data-text', 'Success!').html('Thank You!');
+            $('.email').next().attr('data-text', 'Thank You!').html('Thank You!');
             $('.email').css('pointer-events', 'none');
           } else if (result == "duplicate") {
-            $('.email').next().attr('data-text', 'Success!').html('You have already subscribed!');
+            $('.email').next().attr('data-text', 'You have already subscribed!').html('You have already subscribed!');
           } else {
             console.log(result);
             $('.email').next().attr('data-text', 'Try Again.').html('Try Again.');
