@@ -75,10 +75,13 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-content: center;
   width: 100%;
 
   @include phone {
     justify-content: flex-start;
+    height: 70vh;
+    align-content: space-around;
   }
 
   span {
@@ -115,6 +118,10 @@
 .registerInterest {
   display: block;
   width: 100%;
+
+  @include phone {
+    position: absolute;
+  }
 }
 
 .registerInterest .inputContainer {
@@ -272,7 +279,7 @@
 
     @include phone {
       left: 0;
-      top: 0;
+      top: 2%;
       text-align: left;
     }
   }
@@ -286,16 +293,22 @@
 
     @include phone {
       left: 0;
-      top: 5%;
+      bottom: 10%;
 
     }
   }
   i {
     margin-right: 0.8rem;
   }
-  h2:hover {
-    transition: opacity .2s ease-in-out .2s;
-    @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+  h2{
+    &:hover {
+      transition: opacity .2s ease-in-out .2s;
+      @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+    }
+
+    @include phone {
+      font-size: 14px;
+    }
   }
 
   .date {
