@@ -79,7 +79,7 @@
   width: 100%;
 
   @include phone {
-    justify-content: flex-start;
+    justify-content: space-between;
     height: 70vh;
     align-content: space-around;
   }
@@ -263,7 +263,6 @@
   }
 
   @include phone {
-    font-size: 1rem;
     padding: 1rem;
   }
 
@@ -307,7 +306,7 @@
     }
 
     @include phone {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
