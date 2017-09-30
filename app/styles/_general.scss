@@ -53,22 +53,8 @@
 
 // title styles
 
-.disruptTitle {
-  font-family: "disruptheavy", sans-serif;
-  text-transform: uppercase;
-  font-size: 10rem;
-  display: flex;
-  width: 100rem;
-  align-items: center;
-  position: relative;
-  margin: 3rem 0;
-  letter-spacing: 10rem;
-  &:hover {
-    @include textGlitch("disrupt-title", 10, white, transparent, #00ffff, #ff00ff, 1000, 115);
-  }
-}
 
-.disruptTitleTest {
+.disruptTitle {
   font-family: "disruptheavy", sans-serif;
   text-transform: uppercase;
   font-size: 10rem;
@@ -202,8 +188,6 @@
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
-  // @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-  // @include buttonBackgroundGlitch(registerButtonAnim, $neon-cyan, $dull-green, $bright-green, alternate);
 }
 
 .submitButtonContainer {
