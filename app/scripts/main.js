@@ -96,12 +96,13 @@ $(function() {
 
         },
         success: function(result) {
-          console.log(result);
           if (result == "1") {
-            console.log('Success');
-            $('.email').next().attr('data-text', 'Success!').html('Success!');
+            $('.email').next().attr('data-text', 'Success!').html('Thank You!');
             $('.email').css('pointer-events', 'none');
+          } else if (result == "duplicate") {
+            $('.email').next().attr('data-text', 'Success!').html('You have already subscribed!');
           } else {
+            console.log(result);
             $('.email').next().attr('data-text', 'Try Again.').html('Try Again.');
           }
         },
