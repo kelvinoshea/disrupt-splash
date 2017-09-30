@@ -107,7 +107,7 @@ $(function() {
           }
         },
         error: function(error) {
-          console.log('error');
+          console.log(error);
           $('.email').next().attr('data-text', 'Try Again').html('Try Again');
 
         }
