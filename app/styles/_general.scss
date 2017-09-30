@@ -77,8 +77,20 @@
   flex-wrap: wrap;
   width: 100%;
 
+  @include phone {
+    justify-content: flex-start;
+  }
+
   span {
-    margin: 5%;
+    margin: 4%;
+
+    @include small-desktop {
+      margin: 3%;
+    }
+
+    @include phone {
+      margin: 3% 4%;
+    }
   }
 }
 
@@ -234,21 +246,31 @@
 /*date and locations styles*/
 
 .details {
-  // display: flex;
-  // flex-wrap: wrap;
   position: fixed;
   width: 30%;
   max-width: 400px;
-  text-indent: 1rem hanging;
+
+  @include tablet {
+    width: 100%
+  }
 
   &.left {
     top: 60%;
     right: 70%;
     text-align: right;
+
+    @include tablet {
+      left: 5%;
+      top: 70%;
+    }
   }
   &.right {
     bottom: 66%;
     left: 70%;
+
+    @include tablet {
+      left: 40%;
+    }
   }
   i {
     margin-right: 0.8rem;
@@ -260,6 +282,7 @@
 
   .date {
     text-align: right;
+    margin-bottom: 1rem;
   }
   .location {
     text-align-last: center;

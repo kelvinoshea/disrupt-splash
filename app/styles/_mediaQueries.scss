@@ -1,0 +1,19 @@
+// orignal styles are large screen desktop based, these mixins target smaller devices
+
+@mixin small-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
