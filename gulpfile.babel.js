@@ -118,6 +118,7 @@ pump([
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/main.js',
+      './app/scripts/loader.js',
       './app/scripts/disrupt.js',
       './app/scripts/backgroundEffect.js',
       './app/scripts/serviceWorker.js'
