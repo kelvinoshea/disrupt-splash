@@ -2,24 +2,39 @@
 const html2canvas = require('../vendor/html2canvas.min.js')
 
 /**
- * MOUSE class, for basic mouse tracking
+ * MotionTarget class, for basic mouse and gyro targeting
  */
 
-class Mouse {
+class MotionTarget {
   constructor () {
     this.x = window.innerWidth / 2
     this.y = window.innerHeight / 2
 
-    window.addEventListener('mousemove', e => {
-      this.x = e.clientX
-      this.y = e.clientY
-    })
+    this.eventBindings = {
+      mousemove: this.setTargetFromMouse.bind(this),
+      mouseout: this.resetTarget.bind(this),
+      devicemotion: this.checkGyroSupported.bind(this),
+      deviceorientation: this.setTargetFromGyro.bind(this)
+    }
 
-    window.addEventListener('mouseout', e => {
-      this.x = window.innerWidth / 2
-      this.y = window.innerHeight / 2
-    })
+    this.baseRotation = {
+      beta: null,
+      gamma: null
+    }
+
+    this.maxRotation = {
+      beta: 15,
+      gamma: 10
+    }
+
+    // Check for gyro support
+    this.bindCheckGyro()
+
+    this.betaOutput = document.getElementById('gyro-beta')
+    this.gammaOutput = document.getElementById('gyro-gamma')
   }
+
+  // Return current target position
 
   get pos () {
     return {
@@ -27,9 +42,86 @@ class Mouse {
       y: this.y
     }
   }
+
+  // Return if base rotation has been set for gyro motion
+
+  get baseRotationSet () {
+    return this.baseRotation.beta !== null
+  }
+
+  // Methods to bind input methods to target position
+
+  bindMouseEvents () {
+    window.addEventListener('mousemove', this.eventBindings.mousemove)
+    window.addEventListener('mouseout', this.eventBindings.mouseout)
+  }
+
+  bindCheckGyro () {
+    window.addEventListener('devicemotion', this.eventBindings.devicemotion)
+  }
+  unbindCheckGyro () {
+    window.removeEventListener('devicemotion', this.eventBindings.devicemotion)
+  }
+
+  bindGyro () {
+    window.addEventListener('deviceorientation', this.eventBindings.deviceorientation)
+  }
+
+  // Check if gyro is available
+
+  checkGyroSupported (evt) {
+    if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
+      // Gyro is supported, bind gyro event
+      this.bindGyro()
+    } else {
+      // Gyro not supported, bind mouse instead
+      this.bindMouseEvents()
+    }
+
+    // Unbind check - gyro only needs to be checked once
+    this.unbindCheckGyro()
+  }
+
+  // Methods to set target from either mouse or device movement
+
+  setTargetFromMouse (evt) {
+    this.x = evt.clientX
+    this.y = evt.clientY
+  }
+
+  clamp (n, min, max) {
+    return Math.max(min, Math.min(n, max))
+  }
+
+  setTargetFromGyro (evt) {
+    // Set base rotation when user loads page
+    if (!this.baseRotationSet) {
+      this.baseRotation.beta = evt.beta
+      this.baseRotation.gamma = evt.gamma
+    }
+
+    // Bind gyro sensors to position
+    let xMin = this.baseRotation.gamma - this.maxRotation.gamma
+    let xMax = this.baseRotation.gamma + this.maxRotation.gamma
+    let dx = this.clamp(evt.gamma, xMin, xMax)
+
+    let yMin = this.baseRotation.beta - this.maxRotation.beta
+    let yMax = this.baseRotation.beta + this.maxRotation.beta
+    let dy = this.clamp(evt.beta, yMin, yMax)
+
+    this.x = (dx - xMin) / (xMax - xMin) * window.innerWidth
+    this.y = (dy - yMin) / (yMax - yMin) * window.innerHeight
+  }
+
+  // Reset target position
+
+  resetTarget () {
+    this.x = window.innerWidth / 2
+    this.y = window.innerHeight / 2
+  }
 }
 
-const MOUSE = new Mouse()
+const MOTION_TARGET = new MotionTarget()
 
 /**
  * Trigonometry class
@@ -599,7 +691,7 @@ class DISRUPT {
           /* EFFECT DIRECTION */
 
           let dir = setupData.mouseEffect.dir
-          let dirTarget = Trig.angleBetween(canvasPos, MOUSE.pos)
+          let dirTarget = Trig.angleBetween(canvasPos, MOTION_TARGET.pos)
 
           // Difference between angles
           let dirDiff = dirTarget - dir
@@ -615,7 +707,7 @@ class DISRUPT {
 
           // Mouse pos as percentage
           let mouseMax = Trig.distanceBetween(canvasPos, { x: 0, y: 0})
-          let mouseCurrent = Trig.distanceBetween(canvasPos, MOUSE.pos)
+          let mouseCurrent = Trig.distanceBetween(canvasPos, MOTION_TARGET.pos)
 
           // Move length towards target
           let len = setupData.mouseEffect.len
