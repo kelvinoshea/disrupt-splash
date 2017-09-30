@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://d1rup7.com"><img src="#" alt="Disrupt17" width="200"></a>
+  <a href="https://d1rup7.com"><img src="https://raw.githubusercontent.com/kelvinoshea/disrupt-splash/master/_readme-assets/logo.png" alt="Disrupt17" width="200"></a>
   <br>
   d1rup7.com Splash Page
   <br>
@@ -8,7 +8,7 @@
 
 <h4 align="center">Splash page for the 2017 Interactive Visual Design Graduation show hosted by the <a href="https://www.qut.edu.au/" target="_blank">Queensland University of Technology</a>.</h4>
 
-![screenshot](#)
+![screenshot](https://github.com/kelvinoshea/disrupt-splash/blob/master/_readme-assets/disrupt-splash.gif?raw=true)
 
 
 ## Getting Started
@@ -16,17 +16,22 @@ Feel free to peruse our code and we hope that you can find inspiration or guiden
 
 ## Key Features
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
-  - While you type, LivePreview will automatically scroll to the current location you're editing.
+* Super slick mouse interactions with elements and the background
+  - This extends to utilise a mobile phone's gyroscope on compatible devices.
+* Many animations created by yours truely!
+  - Checkout scripts/disrupt.js & styles/_mixins.scss.
+* Custom built loader
 
 ## Credits
 
 This website uses code and technologies from several open source packages.
 
 - [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
+- [Gulpjs](https://gulpjs.com/)
+- [jQuery](https://jquery.com/)
+- [imagesloaded](https://imagesloaded.desandro.com/)
+- [FontFaceObserver](https://fontfaceobserver.com/)
+- [ServiceWorker](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
 ## Authors
 
