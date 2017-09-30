@@ -361,9 +361,9 @@
     }
   }
 
-  &.instagram {
+  &.github {
     &:hover {
-      @include buttonBackgroundGlitch(instagramAnim, $bright-green, $purple, $neon-cyan, alternate-reverse);
+      @include buttonBackgroundGlitch(githubAnim, $light-charcoal, $white, $grey, alternate);
     }
 
     &:active {
