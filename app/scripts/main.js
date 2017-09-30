@@ -14,7 +14,7 @@ $(function() {
   // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
   documentTitleDisrupter(2000, 1000, 3);
 
-  $('#hitboxes .item').hover(function(event) {
+  /* $('#hitboxes .item').hover(function(event) {
     // IN
     if ($('#effectOverlay > *').hasClass('hidden')) {
       $('#effectOverlay > *').removeClass('hidden');
@@ -25,7 +25,7 @@ $(function() {
     if (!$('#effectOverlay > *').hasClass('hidden')) {
       $('#effectOverlay > *').addClass('hidden');
     }
-  });
+  }); */
 
 
   $('.email').on("invalid", function(e) {

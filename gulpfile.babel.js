@@ -14,6 +14,19 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const pump = require('pump');
 
+const AUTOPREFIXER_BROWSERS = [
+  'ie >= 10',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
+
+
 // Optimize images
 gulp.task('images', () =>
   gulp.src('app/images/**/*')
@@ -45,18 +58,6 @@ gulp.task('copy', () =>
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
-   const AUTOPREFIXER_BROWSERS = [
-     'ie >= 10',
-     'ie_mob >= 10',
-     'ff >= 30',
-     'chrome >= 34',
-     'safari >= 7',
-     'opera >= 23',
-     'ios >= 7',
-     'android >= 4.4',
-     'bb >= 10'
-   ];
-
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
     'app/styles/**/*.scss',
@@ -79,18 +80,6 @@ gulp.task('styles', () => {
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles_dev', () => {
-   const AUTOPREFIXER_BROWSERS = [
-     'ie >= 10',
-     'ie_mob >= 10',
-     'ff >= 30',
-     'chrome >= 34',
-     'safari >= 7',
-     'opera >= 23',
-     'ios >= 7',
-     'android >= 4.4',
-     'bb >= 10'
-   ];
-
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
     'app/styles/**/*.scss',
