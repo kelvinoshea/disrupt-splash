@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #rgb-orb {
@@ -36,6 +37,7 @@
   height: 100vh;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   img {
     position: absolute;
@@ -66,6 +68,35 @@
   }
 }
 
+.disruptTitleTest {
+  font-family: "disruptheavy", sans-serif;
+  text-transform: uppercase;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
+
+  @include phone {
+    justify-content: space-between;
+    height: 70vh;
+    align-content: space-around;
+  }
+
+  span {
+    margin: 4%;
+
+    @include small-desktop {
+      margin: 3%;
+    }
+
+    @include phone {
+      margin: 3% 4%;
+    }
+  }
+}
+
 
 // main content styles
 
@@ -73,6 +104,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
 
   &.centered {
     justify-content: center;
@@ -86,6 +118,10 @@
 .registerInterest {
   display: block;
   width: 100%;
+
+  @include phone {
+    position: absolute;
+  }
 }
 
 .registerInterest .inputContainer {
@@ -217,35 +253,69 @@
 /*date and locations styles*/
 
 .details {
-  // display: flex;
-  // flex-wrap: wrap;
   position: fixed;
   width: 30%;
   max-width: 400px;
-  text-indent: 1rem hanging;
+  box-sizing: border-box;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  @include phone {
+    padding: 1rem;
+  }
 
   &.left {
     top: 60%;
     right: 70%;
     text-align: right;
+
+    @include tablet {
+      left: 5%;
+      top: 70%;
+    }
+
+    @include phone {
+      left: 0;
+      top: 2%;
+      text-align: left;
+    }
   }
   &.right {
     bottom: 66%;
     left: 70%;
+
+    @include tablet {
+      left: 40%;
+    }
+
+    @include phone {
+      left: 0;
+      bottom: 10%;
+
+    }
   }
   i {
     margin-right: 0.8rem;
   }
-  a {
-    display: flex;
-    align-items: center;
-    &:hover i {
-      color: $purple;
+  h2{
+    &:hover {
+      transition: opacity .2s ease-in-out .2s;
+      @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+    }
+
+    @include phone {
+      font-size: 12px;
     }
   }
-  h2:hover {
-    transition: opacity .2s ease-in-out .2s;
-    @include textGlitch("linkText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+
+  .date {
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+  .location {
+    text-align-last: center;
   }
 }
 

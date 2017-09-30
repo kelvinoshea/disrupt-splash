@@ -1,16 +1,18 @@
 $(function() {
   // We Ready Boiis
   var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
-      // [::1] is the IPv6 localhost address.
-      window.location.hostname === '[::1]' ||
-      // 127.0.0.1/8 is considered localhost for IPv4.
-      window.location.hostname.match(
-        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-      )
-    );
+    // [::1] is the IPv6 localhost address.
+    window.location.hostname === '[::1]' ||
+    // 127.0.0.1/8 is considered localhost for IPv4.
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
+  );
 
-    // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
-    documentTitleDisrupter(2000, 1000, 3);
+  var IS_MOBILE = (/Mobi/.test(navigator.userAgent));
+
+  // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
+  documentTitleDisrupter(2000, 1000, 3);
 
   $('#hitboxes .item').hover(function(event) {
     // IN
@@ -46,6 +48,16 @@ $(function() {
       }
     }
   });
+
+  // Hide and show extraneous elements when typing email on mobile devices
+  var toggleWhileTyping = function(toggle) {
+    if (IS_MOBILE) {
+      $('.disruptTitleTest, .details, footer').fadeTo(200, toggle ? 1 : 0);
+    }
+  }
+
+  $('.email').focusin(function () { toggleWhileTyping(false); });
+  $('.email').focusout(function () { toggleWhileTyping(true); });
 
   /* $('#formEmail .email').blur(function(){
     var email = document.querySelector('.email');
