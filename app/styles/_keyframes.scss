@@ -14,3 +14,13 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+@keyframes Appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
