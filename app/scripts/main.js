@@ -1,3 +1,4 @@
+var IS_MOBILE = (/Mobi/.test(navigator.userAgent));
 $(function() {
   // We Ready Boiis
   var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
@@ -8,9 +9,6 @@ $(function() {
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
   );
-
-  var IS_MOBILE = (/Mobi/.test(navigator.userAgent));
-
   // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
   documentTitleDisrupter(2000, 1000, 3);
 
