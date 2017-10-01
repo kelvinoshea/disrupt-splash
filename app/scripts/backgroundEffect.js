@@ -1,7 +1,12 @@
 /* MOUSE EVENT PARALLAX
 ------------------------------------------------------------------------------------------------- */
 
-window.addEventListener('load', addDisruptListeners)
+window.addEventListener('load', function() {
+  // Only run effect on non-mobile devices
+  if (!IS_MOBILE) {
+    addDisruptListeners()
+  }
+})
 
 function addDisruptListeners () {
   // Attach to mousemove
