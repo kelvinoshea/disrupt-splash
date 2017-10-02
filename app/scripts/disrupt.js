@@ -30,6 +30,9 @@ class MotionTarget {
     // Check for gyro support
     this.bindCheckGyro()
 
+    // Fallback in case devicemotion event doesn't fire
+    window.setTimeout(this.noDeviceMotionFallback.bind(this), 10)
+
     this.betaOutput = document.getElementById('gyro-beta')
     this.gammaOutput = document.getElementById('gyro-gamma')
   }
@@ -79,6 +82,12 @@ class MotionTarget {
     }
 
     // Unbind check - gyro only needs to be checked once
+    this.unbindCheckGyro()
+  }
+
+  noDeviceMotionFallback () {
+    // No devicemotion detected, fall back to mouse events
+    this.bindMouseEvents()
     this.unbindCheckGyro()
   }
 
