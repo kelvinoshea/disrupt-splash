@@ -27,11 +27,11 @@ class MotionTarget {
       gamma: 10
     }
 
+    // Bind mouse by default
+    this.bindMouseEvents()
+
     // Check for gyro support
     this.bindCheckGyro()
-
-    // Fallback in case devicemotion event doesn't fire
-    window.setTimeout(this.noDeviceMotionFallback.bind(this), 10)
 
     this.betaOutput = document.getElementById('gyro-beta')
     this.gammaOutput = document.getElementById('gyro-gamma')
@@ -58,6 +58,10 @@ class MotionTarget {
     window.addEventListener('mousemove', this.eventBindings.mousemove)
     window.addEventListener('mouseout', this.eventBindings.mouseout)
   }
+  unbindMouseEvents () {
+    window.removeEventListener('mousemove', this.eventBindings.mousemove)
+    window.removeEventListener('mouseout', this.eventBindings.mouseout)
+  }
 
   bindCheckGyro () {
     window.addEventListener('devicemotion', this.eventBindings.devicemotion)
@@ -76,18 +80,10 @@ class MotionTarget {
     if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
       // Gyro is supported, bind gyro event
       this.bindGyro()
-    } else {
-      // Gyro not supported, bind mouse instead
-      this.bindMouseEvents()
+      this.unbindMouseEvents()
     }
 
     // Unbind check - gyro only needs to be checked once
-    this.unbindCheckGyro()
-  }
-
-  noDeviceMotionFallback () {
-    // No devicemotion detected, fall back to mouse events
-    this.bindMouseEvents()
     this.unbindCheckGyro()
   }
 
