@@ -348,9 +348,9 @@
     }
   }
 
-  &.github {
+  &.snapchat {
     &:hover {
-      @include buttonBackgroundGlitch(githubAnim, $light-charcoal, $white, $grey, alternate);
+      @include buttonBackgroundGlitch(githubAnim, $yellow, $white, $grey, alternate);
     }
 
     &:active {
