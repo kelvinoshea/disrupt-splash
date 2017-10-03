@@ -12,7 +12,7 @@ $(function() {
   var font_saira = new FontFaceObserver('Saira Condensed');
   Promise.all([font_disruptheavy.load(), font_karla.load(), font_saira.load()]).then(function () {
     // Fonts loaded
-    $("body").addClass("fonts-loaded");
+    $("html").addClass("fonts-loaded");
     loaded.fonts = true;
   });
 

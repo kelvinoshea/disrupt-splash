@@ -336,7 +336,9 @@
 
   &.facebook {
     &:hover {
-      @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
+      @include deviceMouse {
+        @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
+      };
     }
 
     &:active {
@@ -356,7 +358,17 @@
 
   &.snapchat {
     &:hover {
-      @include buttonBackgroundGlitch(githubAnim, $yellow, $white, $grey, alternate);
+      @include buttonBackgroundGlitch(snapchatAnim, $yellow, $white, $grey, alternate);
+    }
+
+    &:active {
+      background: $white;
+    }
+  }
+
+  &.github {
+    &:hover {
+      @include buttonBackgroundGlitch(githubAnim, $charcoal, $white, $grey, normal);
     }
 
     &:active {

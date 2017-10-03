@@ -1,6 +1,9 @@
 var IS_MOBILE = (/Mobi/.test(navigator.userAgent));
 $(function() {
   // We Ready Boiis
+
+  FastClick.attach(document.body);
+
   var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
     window.location.hostname === '[::1]' ||
@@ -56,13 +59,13 @@ $(function() {
     $('.fullScreenLayout').removeClass('blur')
   }
 
-  $('.snapchat').click(showSnapcode)
-  $('.snapchatCodeContainer').click(hideSnapcode)
+  $('.snapchat').on('click touchend', showSnapcode)
+  $('.snapchatCodeContainer').on('click touchend',hideSnapcode)
 
-  $('.snapchatCodeContainer .modal').click(event => {
-  event.preventDefault()
-  event.stopPropagation()
-})
+  $('.snapchatCodeContainer .modal').on('click touchend',(event => {
+    event.preventDefault()
+    event.stopPropagation()
+  })
 
   // Hide and show extraneous elements when typing email on mobile devices
   var toggleWhileTyping = function(toggle) {

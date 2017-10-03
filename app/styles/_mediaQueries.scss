@@ -18,6 +18,18 @@
   }
 }
 
+@mixin deviceTouch {
+  @media (pointer: coarse) {
+     @content;
+  }
+}
+
+@mixin deviceMouse {
+  @media (pointer: fine) {
+     @content;
+  }
+}
+
 //small-desktop
 @media (max-width: 1024px) {
 
