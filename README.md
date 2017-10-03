@@ -35,10 +35,10 @@ This website uses code and technologies from several open source packages.
 
 ## Authors
 
-* **Mitchell Williams** - *Developer* - Github [@mitchello77](https://github.com/mitchello77) <span>;&middot</span> [mitchell-williams.com.au](https://mitchell-williams.com.au)
-* **Kelvin O'Shea** - *Developer* - Github [@kelvinoshea](https://github.com/kelvinoshea) ;&middot [kelvinoshea.com](http://kelvinoshea.com/) &middot Twitter [@](#)
-* **Samuel Dale** - *Developer* - Github [@smhdale](https://github.com/smhdale) ;&middot [smhdale.com.au](http://smhdale.com.au/)
-* **Zachary McTague** - *Developer* - Github [@zacharymctague](https://github.com/zacharymctague) ;&middot [zacharymctague.com](http://smhdale.com.au/)
+* **Mitchell Williams** - *Developer* - Github [@mitchello77](https://github.com/mitchello77) · [mitchell-williams.com.au](https://mitchell-williams.com.au)
+* **Kelvin O'Shea** - *Developer* - Github [@kelvinoshea](https://github.com/kelvinoshea) · [kelvinoshea.com](http://kelvinoshea.com/) · Twitter [@](#)
+* **Samuel Dale** - *Developer* - Github [@smhdale](https://github.com/smhdale) · [smhdale.com.au](http://smhdale.com.au/)
+* **Zachary McTague** - *Developer* - Github [@zacharymctague](https://github.com/zacharymctague) · [zacharymctague.com](http://smhdale.com.au/)
 
 See also the list of [contributors](https://github.com/kelvinoshea/disrupt-splash/contributors) who participated in this project.
 
