@@ -2,7 +2,7 @@
 ------------------------------------------------------------------------------------------------- */
 
 .fullScreenLayout {
-  position: relative;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   // background-image: url(../images/bigbg.jpg);
@@ -10,10 +10,6 @@
   // background-repeat: no-repeat;
   // background-position: center;
   background-color: #0f142c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
 }
 
 #rgb-orb {
@@ -28,6 +24,10 @@
 
   img {
     height: 92vmin;
+  }
+
+  @include phone {
+    top: 40%;
   }
 }
 
@@ -88,12 +88,19 @@
 .contentContainer {
   display: flex;
   flex-direction: column;
-  position: relative;
   width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &.centered {
     justify-content: center;
     align-items: center;
+  }
+
+  @include phone {
+    top: 45%;
   }
 }
 
@@ -123,7 +130,7 @@
   padding: 2rem;
   border: 1px solid #FFFFFF;
   outline: none;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   background: transparent;
   text-align: left;
   border-radius: 0;
@@ -240,7 +247,7 @@
 .details {
   position: fixed;
   width: 30%;
-  max-width: 400px;
+  max-width: calc(400px + 3rem);
   box-sizing: border-box;
 
   @include tablet {
@@ -255,6 +262,7 @@
     top: 60%;
     right: 70%;
     text-align: right;
+    padding-left: 3rem;
 
     @include tablet {
       left: 5%;
@@ -270,6 +278,7 @@
   &.right {
     bottom: 66%;
     left: 70%;
+    padding-right: 3rem;
 
     @include tablet {
       left: 40%;

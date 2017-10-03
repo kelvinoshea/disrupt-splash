@@ -847,8 +847,9 @@ class DISRUPT {
 
           // Position canvas, handling special case for ORB
           if (elem.id === 'rgb-orb') {
-            disruption.canvas.style.position = 'absolute'
-            disruption.canvas.style.top = '50%'
+            disruption.canvas.style.position = 'fixed'
+            // This is getting so hacky but eh it works
+            disruption.canvas.style.top = IS_MOBILE ? '45%' : '50%'
             disruption.canvas.style.left = '50%'
             disruption.canvas.style.width = '92vmin'
             disruption.canvas.style.height = '92vmin'
