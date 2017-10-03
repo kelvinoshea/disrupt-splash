@@ -382,12 +382,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $disrupt-dark-blue;
-  opacity: 0.85;
+  background: rgba($disrupt-dark-blue, 0.7);
 
   i {
     position: absolute;
     top: 0;
     right: 0;
+  }
+}
+
+.snapchatCode {
+  width: 100%;
+}
+
+.modal {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
   }
 }

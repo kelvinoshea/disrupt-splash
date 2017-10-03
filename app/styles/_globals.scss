@@ -57,3 +57,10 @@ footer {
 .hidden {
   display: none !important;
 }
+
+.blur {
+  animation-name: addBlur;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}

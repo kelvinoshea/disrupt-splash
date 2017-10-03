@@ -24,3 +24,13 @@
     opacity: 1;
   }
 }
+
+@keyframes addBlur {
+  0% {
+    filter: blur(0px);
+  }
+
+  100% {
+    filter: blur(10px);
+  }
+}
