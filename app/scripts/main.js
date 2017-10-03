@@ -57,7 +57,12 @@ $(function() {
   }
 
   $('.snapchat').click(showSnapcode)
-  $('.snapchatCodeContainer .close').click(hideSnapcode)
+  $('.snapchatCodeContainer').click(hideSnapcode)
+
+  $('.snapchatCodeContainer .modal').click(event => {
+  event.preventDefault()
+  event.stopPropagation()
+})
 
   // Hide and show extraneous elements when typing email on mobile devices
   var toggleWhileTyping = function(toggle) {

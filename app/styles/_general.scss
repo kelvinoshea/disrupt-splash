@@ -375,7 +375,7 @@
 }
 
 .snapchatCodeContainer {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -389,8 +389,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 1rem;
+    cursor: pointer;
   }
 }
 
@@ -402,6 +403,7 @@
   max-width: 80%;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 
   &.centered {
     justify-content: center;
