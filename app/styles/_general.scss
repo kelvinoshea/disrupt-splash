@@ -336,9 +336,7 @@
 
   &.facebook {
     &:hover {
-      @include deviceMouse {
-        @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
-      };
+      @include buttonBackgroundGlitch(facebookAnim, $blue, $purple, $neon-cyan, normal);
     }
 
     &:active {
@@ -385,6 +383,12 @@
   }
 }
 
+@include deviceNoHover {
+  .facebook:hover{};
+  .instagram:hover{};
+  .snapchat:hover{};
+  .github:hover{};
+};
 
 .socials a:visited {
   color: $white;
