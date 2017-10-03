@@ -71,3 +71,7 @@ footer {
   animation-fill-mode: both;
   animation-timing-function: ease;
 }
+
+.desktop-only, .tablet-only, .mobile-only {
+  display: none !important;
+}
