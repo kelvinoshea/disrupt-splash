@@ -323,6 +323,7 @@
   transition: 0.2s;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 
   &.facebook {
     &:hover {
@@ -388,15 +389,17 @@
     position: absolute;
     top: 0;
     right: 0;
+    font-size: 2rem;
+    margin: 1rem;
   }
 }
 
 .snapchatCode {
-  width: 100%;
+  width: 25rem;
 }
 
 .modal {
-  width: 25vw;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
 

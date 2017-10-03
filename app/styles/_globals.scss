@@ -62,5 +62,12 @@ footer {
   animation-name: addBlur;
   animation-duration: 0.2s;
   animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+.scaleIn {
+  animation-name: scaleIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
   animation-timing-function: ease;
 }

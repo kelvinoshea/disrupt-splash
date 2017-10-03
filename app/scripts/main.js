@@ -47,6 +47,26 @@ $(function() {
     }
   });
 
+
+
+  // show snapchat overlay
+   function showSnapchatCode() {
+     var snapchatIcon = $(".snapchat")
+     var layout = $(".fullScreenLayout")
+     var overlay = $(".snapchatCodeContainer")
+     var close - $(".snapchatCodeContainer .close")
+
+     snapchatIcon.click(function () {
+       overlay.removeClass("hidden")
+       layout.addClass("blur")
+     });
+
+     close.click(function () {
+       overlay.addClass("hidden")
+       layout.removeClass("blur")
+     })
+   }
+
   // Hide and show extraneous elements when typing email on mobile devices
   var toggleWhileTyping = function(toggle) {
     if (IS_MOBILE) {
