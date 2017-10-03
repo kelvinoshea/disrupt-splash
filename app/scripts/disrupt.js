@@ -10,11 +10,16 @@ class MotionTarget {
     this.x = window.innerWidth / 2
     this.y = window.innerHeight / 2
 
+    this.shakeEvent = new Shake({
+      threshold: 12,
+      timeout: 4000
+    })
+
     this.eventBindings = {
       mousemove: this.setTargetFromMouse.bind(this),
       mouseout: this.resetTarget.bind(this),
-      devicemotion: this.checkGyroSupported.bind(this),
-      deviceorientation: this.setTargetFromGyro.bind(this)
+      deviceorientation: this.setTargetFromGyro.bind(this),
+      shake: this.handleShake.bind(this)
     }
 
     this.baseRotation = {
@@ -31,7 +36,13 @@ class MotionTarget {
     this.bindMouseEvents()
 
     // Check for gyro support
-    this.bindCheckGyro()
+    this.checkGyro().then(result => {
+      if (result) {
+        this.bindGyro()
+        this.bindShake()
+        this.unbindMouseEvents()
+      }
+    })
 
     this.betaOutput = document.getElementById('gyro-beta')
     this.gammaOutput = document.getElementById('gyro-gamma')
@@ -59,28 +70,20 @@ class MotionTarget {
     window.addEventListener('mouseout', this.eventBindings.mouseout)
   }
 
-  bindCheckGyro () {
-    window.addEventListener('devicemotion', this.eventBindings.devicemotion)
-  }
-  unbindCheckGyro () {
-    window.removeEventListener('devicemotion', this.eventBindings.devicemotion)
+  checkGyro () {
+    return new Promise((resolve, reject) => {
+      window.addEventListener('devicemotion', evt => {
+        if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
+          resolve(true)
+        } else {
+          resolve(false)
+        }
+      })
+    })
   }
 
   bindGyro () {
     window.addEventListener('deviceorientation', this.eventBindings.deviceorientation)
-  }
-
-  // Check if gyro is available
-
-  checkGyroSupported (evt) {
-    if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
-      // Gyro is supported, bind gyro event
-      this.bindGyro()
-      this.unbindMouseEvents()
-    }
-
-    // Unbind check - gyro only needs to be checked once
-    this.unbindCheckGyro()
   }
 
   // Methods to set target from either mouse or device movement
@@ -119,6 +122,25 @@ class MotionTarget {
   resetTarget () {
     this.x = window.innerWidth / 2
     this.y = window.innerHeight / 2
+  }
+
+  // Handle shake effect
+
+  bindShake () {
+    if (window.DISRUPT !== undefined) {
+      // Add relevant classes
+      document.querySelector('.fullScreenLayout').classList.add('disrupt', 'dsrpt-blocks')
+
+      // Add shake listener
+      window.addEventListener('shake', this.eventBindings.shake, false)
+      this.shakeEvent.start()
+    }
+  }
+
+  handleShake () {
+    // Vibrate, then distort everything
+    window.navigator.vibrate(200)
+    window.DISRUPT.addDisruptions()
   }
 }
 
@@ -294,12 +316,12 @@ class DISRUPT {
        */
       'dsrpt-blocks': {
         setup: (canvas, domImage, generators) => {
-          let numblocks = 15
+          let numblocks = 30
           let blocks = []
           for (let i = 0; i < numblocks; i++) {
             let block = generators.randomRect(canvas)
 
-            let maxOffset = 20
+            let maxOffset = 50
 
             let xOff = Math.random() * maxOffset * 2 - maxOffset
             let yOff = Math.random() * maxOffset * 2 - maxOffset
@@ -312,7 +334,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 2500,
+            runtime: 3000,
             blocks: blocks
           }
         },
