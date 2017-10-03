@@ -58,10 +58,6 @@ class MotionTarget {
     window.addEventListener('mousemove', this.eventBindings.mousemove)
     window.addEventListener('mouseout', this.eventBindings.mouseout)
   }
-  unbindMouseEvents () {
-    window.removeEventListener('mousemove', this.eventBindings.mousemove)
-    window.removeEventListener('mouseout', this.eventBindings.mouseout)
-  }
 
   bindCheckGyro () {
     window.addEventListener('devicemotion', this.eventBindings.devicemotion)
@@ -944,11 +940,14 @@ class DisruptAnimation {
   }
 }
 
-// Auto-create global instance and trigger disruptions
-window.DISRUPT = new DISRUPT()
+// Check for canvas support before enabling
+if (document.querySelector('html').classList.contains('has-canvas')) {
+  // Auto-create global instance and trigger disruptions
+  window.DISRUPT = new DISRUPT()
 
-// TODO: add ability to wait until revealed by scroll
-window.DISRUPT.addDisruptions()
+  // TODO: add ability to wait until revealed by scroll
+  window.DISRUPT.addDisruptions()
+}
 
 },{"../vendor/html2canvas.min.js":2}],2:[function(require,module,exports){
 (function (global){

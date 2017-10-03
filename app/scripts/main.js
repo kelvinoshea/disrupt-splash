@@ -62,7 +62,7 @@ $(function() {
   $('.snapchat').on('click touchend', showSnapcode)
   $('.snapchatCodeContainer').on('click touchend',hideSnapcode)
 
-  $('.snapchatCodeContainer .modal').on('click touchend',(event => {
+  $('.snapchatCodeContainer .modal').on('click touchend', event => {
     event.preventDefault()
     event.stopPropagation()
   })
