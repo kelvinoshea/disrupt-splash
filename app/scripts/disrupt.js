@@ -962,14 +962,11 @@ class DisruptAnimation {
   }
 }
 
-// Check for canvas support before enabling
-if (document.querySelector('html').classList.contains('has-canvas')) {
-  // Auto-create global instance and trigger disruptions
-  window.DISRUPT = new DISRUPT()
+// Auto-create global instance and trigger disruptions
+window.DISRUPT = new DISRUPT()
 
-  // TODO: add ability to wait until revealed by scroll
-  window.DISRUPT.addDisruptions()
-}
+// TODO: add ability to wait until revealed by scroll
+window.DISRUPT.addDisruptions()
 
 },{"../vendor/html2canvas.min.js":2}],2:[function(require,module,exports){
 (function (global){
