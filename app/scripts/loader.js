@@ -44,10 +44,12 @@ $(function() {
   // Loader FUNCTIONS
 
   function loader_hide() {
+    $("html").addClass("loaded");
     $("#loader").hide();
   }
 
   function loader_show() {
+    $("html").removeClass("loaded");
     $("#loader").show();
   }
 });
