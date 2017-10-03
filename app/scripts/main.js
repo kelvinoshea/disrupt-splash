@@ -47,25 +47,17 @@ $(function() {
     }
   });
 
+  var showSnapcode = function() {
+    $('.snapchatCodeContainer').removeClass('hidden')
+    $('.fullScreenLayout').addClass('blur')
+  }
+  var hideSnapcode = function() {
+    $('.snapchatCodeContainer').addClass('hidden')
+    $('.fullScreenLayout').removeClass('blur')
+  }
 
-
-  // show snapchat overlay
-   function showSnapchatCode() {
-     var snapchatIcon = $(".snapchat")
-     var layout = $(".fullScreenLayout")
-     var overlay = $(".snapchatCodeContainer")
-     var close - $(".snapchatCodeContainer .close")
-
-     snapchatIcon.click(function () {
-       overlay.removeClass("hidden")
-       layout.addClass("blur")
-     });
-
-     close.click(function () {
-       overlay.addClass("hidden")
-       layout.removeClass("blur")
-     })
-   }
+  $('.snapchat').click(showSnapcode)
+  $('.snapchatCodeContainer .close').click(hideSnapcode)
 
   // Hide and show extraneous elements when typing email on mobile devices
   var toggleWhileTyping = function(toggle) {
