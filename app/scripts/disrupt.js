@@ -43,9 +43,6 @@ class MotionTarget {
         this.unbindMouseEvents()
       }
     })
-
-    this.betaOutput = document.getElementById('gyro-beta')
-    this.gammaOutput = document.getElementById('gyro-gamma')
   }
 
   // Return current target position
@@ -68,6 +65,11 @@ class MotionTarget {
   bindMouseEvents () {
     window.addEventListener('mousemove', this.eventBindings.mousemove)
     window.addEventListener('mouseout', this.eventBindings.mouseout)
+  }
+
+  unbindMouseEvents () {
+    window.removeEventListener('mousemove', this.eventBindings.mousemove)
+    window.removeEventListener('mouseout', this.eventBindings.mouseout)
   }
 
   checkGyro () {
@@ -139,13 +141,14 @@ class MotionTarget {
     let target = document.querySelector('.fullScreenLayout')
     let choices = [
       'dsrpt-horizontal',
-      'dsrpt-blocks'
+      'dsrpt-blocks',
+      'dsrpt-dissolve'
     ]
     target.classList.add('disrupt', 'disrupt-once', choices[Math.floor(Math.random() * choices.length)])
 
     // Vibrate and distort everything
     window.DISRUPT.addDisruptions()
-    window.navigator.vibrate(200)
+    navigator.vibrate(500)
   }
 }
 
@@ -233,7 +236,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 2000,
+            runtime: 3000,
             lines: lines
           }
         },
@@ -273,8 +276,9 @@ class DISRUPT {
        */
       'dsrpt-dissolve': {
         setup: canvas => {
-          let rows = 30
-          let columns = 8
+          let square = 30
+          let rows = Math.floor(window.innerWidth / square)
+          let columns = Math.floor(window.innerHeight / square)
 
           let w = canvas.width / rows
           let h = canvas.height / columns
@@ -296,7 +300,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 1500,
+            runtime: 2500,
             grid: grid
           }
         },

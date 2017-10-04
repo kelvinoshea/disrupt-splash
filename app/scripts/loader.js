@@ -33,11 +33,11 @@ $(function() {
   // Loader FUNCTIONS
 
   function loader_hide() {
-    $("#loader").hide();
+    $("#loader").fadeOut(500);
   }
 
   function loader_show() {
-    $("#loader").show();
+    $("#loader").fadeIn(500);
   }
 
   // Promise race between load conditions and timeout
