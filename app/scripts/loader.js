@@ -1,11 +1,13 @@
+// Booleans
+var loaded = {};
+loaded.fonts = false;
+loaded.orb = false;
+loaded.noise = false;
+loaded.cache = false;
+
+
 $(function() {
   // On ready to double check packages are loaded
-  // Booleans
-  var loaded = {};
-  loaded.fonts = false;
-  loaded.orb = false;
-  loaded.noise = false;
-
   //Fonts
   var font_disruptheavy = new FontFaceObserver('disruptheavy');
   var font_karla = new FontFaceObserver('Karla');
