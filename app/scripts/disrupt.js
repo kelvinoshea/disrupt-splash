@@ -856,13 +856,20 @@ class DISRUPT {
 
   addCachedDisruptions () {
     let toCache = Array.from(document.getElementsByClassName(this.cacheClass))
+    let caches = []
+
     for (let i = 0; i < toCache.length; i++) {
       let elem = toCache[i]
       elem.setAttribute(this.cacheAttr, i)
-      this.createDisruptImage(elem).then(data => {
-        this.cachedImages[i] = data
-      })
+      caches.push(new Promise((resolve, reject) => {
+        this.createDisruptImage(elem).then(data => {
+          this.cachedImages[i] = data
+          resolve()
+        }).catch(reject)
+      }))
     }
+
+    return Promise.all(caches)
   }
 
   getDisruptImage (elem) {
