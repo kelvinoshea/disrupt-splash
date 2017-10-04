@@ -10,11 +10,16 @@ class MotionTarget {
     this.x = window.innerWidth / 2
     this.y = window.innerHeight / 2
 
+    this.shakeEvent = new Shake({
+      threshold: 12,
+      timeout: 4000
+    })
+
     this.eventBindings = {
       mousemove: this.setTargetFromMouse.bind(this),
       mouseout: this.resetTarget.bind(this),
-      devicemotion: this.checkGyroSupported.bind(this),
-      deviceorientation: this.setTargetFromGyro.bind(this)
+      deviceorientation: this.setTargetFromGyro.bind(this),
+      shake: this.handleShake.bind(this)
     }
 
     this.baseRotation = {
@@ -31,10 +36,13 @@ class MotionTarget {
     this.bindMouseEvents()
 
     // Check for gyro support
-    this.bindCheckGyro()
-
-    this.betaOutput = document.getElementById('gyro-beta')
-    this.gammaOutput = document.getElementById('gyro-gamma')
+    this.checkGyro().then(result => {
+      if (result) {
+        this.bindGyro()
+        this.bindShake()
+        this.unbindMouseEvents()
+      }
+    })
   }
 
   // Return current target position
@@ -59,28 +67,25 @@ class MotionTarget {
     window.addEventListener('mouseout', this.eventBindings.mouseout)
   }
 
-  bindCheckGyro () {
-    window.addEventListener('devicemotion', this.eventBindings.devicemotion)
+  unbindMouseEvents () {
+    window.removeEventListener('mousemove', this.eventBindings.mousemove)
+    window.removeEventListener('mouseout', this.eventBindings.mouseout)
   }
-  unbindCheckGyro () {
-    window.removeEventListener('devicemotion', this.eventBindings.devicemotion)
+
+  checkGyro () {
+    return new Promise((resolve, reject) => {
+      window.addEventListener('devicemotion', evt => {
+        if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
+          resolve(true)
+        } else {
+          resolve(false)
+        }
+      })
+    })
   }
 
   bindGyro () {
     window.addEventListener('deviceorientation', this.eventBindings.deviceorientation)
-  }
-
-  // Check if gyro is available
-
-  checkGyroSupported (evt) {
-    if (evt.rotationRate.alpha || evt.rotationRate.beta || evt.rotationRate.gamma) {
-      // Gyro is supported, bind gyro event
-      this.bindGyro()
-      this.unbindMouseEvents()
-    }
-
-    // Unbind check - gyro only needs to be checked once
-    this.unbindCheckGyro()
   }
 
   // Methods to set target from either mouse or device movement
@@ -120,9 +125,34 @@ class MotionTarget {
     this.x = window.innerWidth / 2
     this.y = window.innerHeight / 2
   }
+
+  // Handle shake effect
+
+  bindShake () {
+    if (window.DISRUPT !== undefined) {
+      // Add shake listener
+      window.addEventListener('shake', this.eventBindings.shake, false)
+      this.shakeEvent.start()
+    }
+  }
+
+  handleShake () {
+    // Add relevant classes
+    let target = document.querySelector('.fullScreenLayout')
+    let choices = [
+      'dsrpt-horizontal',
+      'dsrpt-blocks',
+      'dsrpt-dissolve'
+    ]
+    target.classList.add('disrupt', 'disrupt-once', choices[Math.floor(Math.random() * choices.length)])
+
+    // Vibrate and distort everything
+    window.DISRUPT.addDisruptions()
+    navigator.vibrate(500)
+  }
 }
 
-const MOTION_TARGET = new MotionTarget()
+window.MOTION_TARGET = new MotionTarget()
 
 /**
  * Trigonometry class
@@ -154,7 +184,12 @@ class DISRUPT {
   constructor () {
     this.DOMURL = window.URL || window.webkitURL || window
 
+    this.cacheAttr = 'disrupt-cache-id'
+    this.cacheClass = 'disrupt-cache'
+    this.cachedImages = []
     this.targetClass = 'disrupt'
+    this.disruptOnceClass = 'disrupt-once'
+    this.disruptedClass = 'disrupted'
     this.disruptables = {}
 
     this.disruptionCounter = 0
@@ -201,7 +236,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 2000,
+            runtime: 3000,
             lines: lines
           }
         },
@@ -241,8 +276,9 @@ class DISRUPT {
        */
       'dsrpt-dissolve': {
         setup: canvas => {
-          let rows = 30
-          let columns = 8
+          let square = 30
+          let rows = Math.floor(window.innerWidth / square)
+          let columns = Math.floor(window.innerHeight / square)
 
           let w = canvas.width / rows
           let h = canvas.height / columns
@@ -264,7 +300,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 1500,
+            runtime: 2500,
             grid: grid
           }
         },
@@ -294,12 +330,12 @@ class DISRUPT {
        */
       'dsrpt-blocks': {
         setup: (canvas, domImage, generators) => {
-          let numblocks = 15
+          let numblocks = 30
           let blocks = []
           for (let i = 0; i < numblocks; i++) {
             let block = generators.randomRect(canvas)
 
-            let maxOffset = 20
+            let maxOffset = 50
 
             let xOff = Math.random() * maxOffset * 2 - maxOffset
             let yOff = Math.random() * maxOffset * 2 - maxOffset
@@ -312,7 +348,7 @@ class DISRUPT {
           }
 
           return {
-            runtime: 2500,
+            runtime: 3000,
             blocks: blocks
           }
         },
@@ -692,7 +728,7 @@ class DISRUPT {
           /* EFFECT DIRECTION */
 
           let dir = setupData.mouseEffect.dir
-          let dirTarget = Trig.angleBetween(canvasPos, MOTION_TARGET.pos)
+          let dirTarget = Trig.angleBetween(canvasPos, window.MOTION_TARGET.pos)
 
           // Difference between angles
           let dirDiff = dirTarget - dir
@@ -708,7 +744,7 @@ class DISRUPT {
 
           // Mouse pos as percentage
           let mouseMax = Trig.distanceBetween(canvasPos, { x: 0, y: 0})
-          let mouseCurrent = Trig.distanceBetween(canvasPos, MOTION_TARGET.pos)
+          let mouseCurrent = Trig.distanceBetween(canvasPos, window.MOTION_TARGET.pos)
 
           // Move length towards target
           let len = setupData.mouseEffect.len
@@ -772,12 +808,22 @@ class DISRUPT {
     }
   }
 
+  get disruptableClass () {
+    return `.${this.targetClass}:not(.${this.disruptedClass})`
+  }
+
   get disruptionTypes () {
     return Object.keys(this.DISRUPTIONS)
   }
 
   getDisruption (id) {
     return this.disruptables[id]
+  }
+
+  removeDisruptionClasses (elem) {
+    let classes = elem.className
+    let replacedClasses = classes.replace(/(disrupt(?!\w)(-[a-z]*)?|dsrpt[a-z-]*)/g, '').replace(/ +/g, ' ').trim()
+    elem.className = replacedClasses
   }
 
   removeDisruption (id) {
@@ -788,6 +834,13 @@ class DISRUPT {
 
     // Re-show source element
     disruption.elem.style.visibility = 'visible'
+    disruption.elem.classList.remove(this.disruptedClass)
+
+    // Should this only play once?
+    if (disruption.elem.classList.contains(this.disruptOnceClass)) {
+      this.removeDisruptionClasses(disruption.elem)
+      disruption.elem.classList.remove(this.targetClass)
+    }
 
     // Remove disruption canvas
     disruption.canvas.parentElement.removeChild(disruption.canvas)
@@ -805,11 +858,64 @@ class DISRUPT {
 
   /* DISRUPTION FUNCTIONS */
 
+  addCachedDisruptions () {
+    let toCache = Array.from(document.getElementsByClassName(this.cacheClass))
+    let caches = []
+
+    for (let i = 0; i < toCache.length; i++) {
+      let elem = toCache[i]
+      elem.setAttribute(this.cacheAttr, i)
+      caches.push(new Promise((resolve, reject) => {
+        this.createDisruptImage(elem).then(data => {
+          this.cachedImages[i] = data
+          resolve()
+        }).catch(reject)
+      }))
+    }
+
+    return Promise.all(caches)
+  }
+
+  getDisruptImage (elem) {
+    // Check for cached image
+    return new Promise((resolve, reject) => {
+      let cacheId = elem.getAttribute(this.cacheAttr)
+      if (cacheId) {
+        resolve(this.cachedImages[cacheId])
+      } else {
+        this.createDisruptImage(elem).then(resolve).catch(reject)
+      }
+    })
+  }
+
+  createDisruptImage (elem) {
+    // Return a canvas and the image to draw on it
+    return new Promise((resolve, reject) => {
+      html2canvas(elem, {
+        background: undefined,
+        letterRendering: true
+      }).then(canvas => {
+        let img = new Image()
+        img.crossOrigin = 'anonymous'
+        img.src = canvas.toDataURL('data/image')
+        img.onload = function () {
+          resolve({
+            canvas: canvas,
+            image: img
+          })
+        }
+      }).catch(reject)
+    })
+  }
+
   addDisruptions () {
     // Scan through DOM and find disruptable elements
-    let disruptables = Array.from(document.getElementsByClassName(this.targetClass))
+    let disruptables = Array.from(document.querySelectorAll(this.disruptableClass))
 
     let canvasLoads = disruptables.map(elem => {
+      // Mark element as disrupted
+      elem.classList.add(this.disruptedClass)
+
       // Determine disruption type - pick first found class
       let disruptionType = 'dsrpt-horizontal'
       for (let anim of this.disruptionTypes) {
@@ -826,18 +932,11 @@ class DISRUPT {
         loop: elem.classList.contains('loop')
       }
 
-      // Use html2canvas to create canvas and image
+      // Use html2canvas to create canvas and image, or fetch from cache
       return new Promise((resolve, reject) => {
-        html2canvas(elem, {
-          background: undefined,
-          letterRendering: true
-        }).then(canvas => {
-          let img = new Image()
-          img.crossOrigin = 'anonymous'
-          img.src = canvas.toDataURL('data/image')
-
-          disruption.image = img
-          disruption.canvas = canvas
+        this.getDisruptImage(elem).then(data => {
+          disruption.image = data.image
+          disruption.canvas = data.canvas
 
           this.disruptables[disruption.id] = disruption
 
@@ -853,10 +952,8 @@ class DISRUPT {
           } else {
             this.positionCanvas(elem, disruption.canvas)
           }
-          elem.parentNode.insertBefore(disruption.canvas, elem)
-
-          // Resolve after image has loaded
-          img.onload = resolve
+          elem.parentNode.insertBefore(disruption.canvas, elem.nextSibling)
+          resolve()
         })
       })
     })
@@ -940,14 +1037,11 @@ class DisruptAnimation {
   }
 }
 
-// Check for canvas support before enabling
-if (document.querySelector('html').classList.contains('has-canvas')) {
-  // Auto-create global instance and trigger disruptions
-  window.DISRUPT = new DISRUPT()
+// Auto-create global instance and trigger disruptions
+window.DISRUPT = new DISRUPT()
 
-  // TODO: add ability to wait until revealed by scroll
-  window.DISRUPT.addDisruptions()
-}
+// TODO: add ability to wait until revealed by scroll
+window.DISRUPT.addDisruptions()
 
 },{"../vendor/html2canvas.min.js":2}],2:[function(require,module,exports){
 (function (global){
