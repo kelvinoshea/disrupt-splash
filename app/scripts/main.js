@@ -51,20 +51,20 @@ $(function() {
   });
 
   var showSnapcode = function() {
-    $('.snapchatCodeContainer').removeClass('hidden')
-    $('.fullScreenLayout').addClass('blur')
+    $('.snapchatCodeContainer').removeClass('hidden');
+    $('.fullScreenLayout').addClass('blur');
   }
   var hideSnapcode = function() {
-    $('.snapchatCodeContainer').addClass('hidden')
-    $('.fullScreenLayout').removeClass('blur')
+    $('.snapchatCodeContainer').addClass('hidden');
+    $('.fullScreenLayout').removeClass('blur');
   }
 
-  $('.snapchat').on('click', showSnapcode)
-  $('.snapchatCodeContainer').on('click',hideSnapcode)
+  $('.snapchat').click(showSnapcode);
+  $('.snapchatCodeContainer').click(hideSnapcode);
 
-  $('.snapchatCodeContainer .modal').on('click', event => {
-    event.preventDefault()
-    event.stopPropagation()
+  $('.snapchatCodeContainer .modal').click(event => {
+    event.preventDefault();
+    event.stopPropagation();
   })
 
   // Hide and show extraneous elements when typing email on mobile devices
