@@ -59,10 +59,10 @@ $(function() {
     $('.fullScreenLayout').removeClass('blur')
   }
 
-  $('.snapchat').on('click touchend', showSnapcode)
-  $('.snapchatCodeContainer').on('click touchend',hideSnapcode)
+  $('.snapchat').on('click', showSnapcode)
+  $('.snapchatCodeContainer').on('click',hideSnapcode)
 
-  $('.snapchatCodeContainer .modal').on('click touchend', event => {
+  $('.snapchatCodeContainer .modal').on('click', event => {
     event.preventDefault()
     event.stopPropagation()
   })
