@@ -1,4 +1,5 @@
 var IS_MOBILE = (/Mobi/.test(navigator.userAgent));
+if (IS_MOBILE) {$("html").addClass("isMobile");}
 $(function() {
   // We Ready Boiis
 
@@ -15,18 +16,10 @@ $(function() {
   // Shuffle the title every {param1}ms and display it for {param2}ms with {param3} number of random symbols
   documentTitleDisrupter(2000, 1000, 3);
 
-  /* $('#hitboxes .item').hover(function(event) {
-    // IN
-    if ($('#effectOverlay > *').hasClass('hidden')) {
-      $('#effectOverlay > *').removeClass('hidden');
-    }
-
-  }, function(event) {
-    // OUT
-    if (!$('#effectOverlay > *').hasClass('hidden')) {
-      $('#effectOverlay > *').addClass('hidden');
-    }
-  }); */
+  // Change links based on devices
+  //if (IS_MOBILE) {
+  //  $("footer .socials .facebook").attr("href", ""); //check if app installed?
+  //}
 
 
   $('.email').on("invalid", function(e) {
