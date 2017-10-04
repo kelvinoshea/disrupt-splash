@@ -1,11 +1,3 @@
-// Booleans
-var loaded = {};
-loaded.fonts = false;
-loaded.orb = false;
-loaded.noise = false;
-loaded.cache = false;
-
-
 $(function() {
   // On ready to double check packages are loaded
   //Fonts
@@ -15,33 +7,28 @@ $(function() {
   Promise.all([font_disruptheavy.load(), font_karla.load(), font_saira.load()]).then(function () {
     // Fonts loaded
     $("html").addClass("fonts-loaded");
-    loaded.fonts = true;
   });
 
-  // Images
-  $('#noise-overlay').imagesLoaded( function() {
-    loaded.noise = true;
-  });
-  $("#rgb-orb").imagesLoaded( function() {
-    loaded.orb  = true;
-  });
+  function imageLoadPromise(selector) {
+    return new Promise((resolve, reject) => {
+      $(selector).imagesLoaded(resolve)
+    })
+  }
 
-  // Check ever 500ms for done
-  // bit of a dirty way to do it lol but it works!
-  var loadCount = 0;
-  var loadCheck = setInterval(function() {
-    if (loadCount > 20) {
-      // somehow stuff has not loaded after 10 seconds?
-      loader_hide()
-      clearInterval(loadCheck);
-    }
-    if (allTrue(loaded)) {
-      loader_hide()
-      clearInterval(loadCheck);
-    }
-    loadCount++;
-  }, 500);
-  function allTrue(obj) {for(var o in obj) {if(!obj[o]) return false;}return true;}
+  // Set some loaders in a Promise.all
+  let loadConditions = [
+    font_disruptheavy.load(),
+    font_karla.load(),
+    font_saira.load(),
+    imageLoadPromise('#noise-overlay'),
+    imageLoadPromise('#rgb-orb'),
+    window.DISRUPT.addCachedDisruptions()
+  ]
+
+  // Timeout after 10 seconds
+  let timeoutCondition = new Promise((resolve, reject) => {
+    window.setTimeout(resolve, 10000)
+  })
 
   // Loader FUNCTIONS
 
@@ -52,4 +39,12 @@ $(function() {
   function loader_show() {
     $("#loader").show();
   }
+
+  // Promise race between load conditions and timeout
+  Promise.race([
+    Promise.all(loadConditions),
+    timeoutCondition
+  ]).then(() => {
+    loader_hide()
+  })
 });

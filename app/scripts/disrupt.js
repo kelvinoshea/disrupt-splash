@@ -1036,9 +1036,6 @@ class DisruptAnimation {
 // Auto-create global instance and trigger disruptions
 window.DISRUPT = new DISRUPT()
 
-// Look for cached disruptions
-window.DISRUPT.addCachedDisruptions()
-
 // TODO: add ability to wait until revealed by scroll
 window.DISRUPT.addDisruptions()
 
