@@ -107,9 +107,10 @@ pump([
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/main.js',
-      './app/scripts/loader.js',
+      './app/scripts/vendor/shake.js',
       './app/scripts/disrupt.js',
       './app/scripts/backgroundEffect.js',
+      './app/scripts/loader.js',
       './app/scripts/serviceWorker.js'
     ]),
     $.newer('.tmp/scripts'),
@@ -168,7 +169,7 @@ gulp.task('default', ['scripts', 'styles_dev'], () => {
     //       will present a certificate warning in the browser.
     // https: true,
     server: ['.tmp', 'app'],
-    port: 3001
+    port: 3000
   });
 
   gulp.watch(['app/**/*.html'], reload);
