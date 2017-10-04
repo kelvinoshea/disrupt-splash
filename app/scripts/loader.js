@@ -33,10 +33,12 @@ $(function() {
   // Loader FUNCTIONS
 
   function loader_hide() {
+    $("html").addClass("loaded");
     $("#loader").fadeOut(500);
   }
 
   function loader_show() {
+    $("html").removeClass("loaded");
     $("#loader").fadeIn(500);
   }
 

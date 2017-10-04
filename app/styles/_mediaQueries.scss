@@ -18,6 +18,12 @@
   }
 }
 
+@mixin not-phone {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
 @mixin deviceTouch {
   @media (pointer: coarse) {
      @content;
@@ -29,6 +35,13 @@
      @content;
   }
 }
+
+@mixin deviceNoHover{
+  @media (hover: none) {
+     @content;
+  }
+}
+
 
 //small-desktop
 @media (max-width: 1024px) {
