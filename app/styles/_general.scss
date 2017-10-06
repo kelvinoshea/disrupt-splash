@@ -192,8 +192,9 @@
   margin-top: .1rem;
 }
 
-html:not(.isMobile) .registerInterest .inputContainer:hover .buttonText {		 +  &:hover {
- @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15); } }
+html:not(.isMobile) .registerInterest .inputContainer:hover .buttonText {
+ @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
+}
 
 .submitButtonContainer {
   position: absolute;
