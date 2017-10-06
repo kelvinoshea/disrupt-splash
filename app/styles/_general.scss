@@ -190,11 +190,10 @@
   transition: opacity .2s ease-in-out .2s;
   line-height: 1.4rem;
   margin-top: .1rem;
-
-  &:hover {
-    @include textGlitch("buttonTextr", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15);
-  }
 }
+
+html:not(.isMobile) .registerInterest .inputContainer:hover .buttonText {		 +  &:hover {
+ @include textGlitch("buttonText", 11, #FFFFFF, transparent, #00ffff, #ff00ff, 200, 15); } }
 
 .submitButtonContainer {
   position: absolute;
