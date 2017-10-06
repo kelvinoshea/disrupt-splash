@@ -128,6 +128,25 @@ pump([
   ], cb)
 });
 
+gulp.task('vendor_scripts', function(cb) {
+pump([
+    gulp.src([
+      './app/scripts/vendor/**/*.js'
+    ]),
+    $.newer('.tmp/scripts'),
+    $.sourcemaps.init(),
+    $.babel(),
+    $.sourcemaps.write(),
+    gulp.dest('.tmp/scripts'),
+    $.uglify(),
+    // Output files,
+    $.size({title: 'vendor_scripts'}),
+    $.sourcemaps.write('.'),
+    gulp.dest('dist/scripts/vendor/'),
+    gulp.dest('.tmp/scripts/vendor/')
+  ], cb)
+});
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   return gulp.src('app/**/*.html')
@@ -193,7 +212,7 @@ gulp.task('serve:dist', ['deploy'], () =>
 gulp.task('deploy', ['clean'], cb =>
   runSequence(
     'styles',
-    ['html', 'scripts', 'images', 'copy', 'fonts'],
+    ['html', 'scripts', 'vendor_scripts', 'images', 'copy', 'fonts'],
     'generate-service-worker',
     cb
   )
@@ -202,8 +221,8 @@ gulp.task('deploy', ['clean'], cb =>
 // Run PageSpeed Insights
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
-  pagespeed('http://d1srup7.com', {
-    strategy: 'mobile'
+  pagespeed('https://d1srup7.com', {
+    strategy: 'desktop'
   }, cb)
 );
 
