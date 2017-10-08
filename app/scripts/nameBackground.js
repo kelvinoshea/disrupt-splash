@@ -191,10 +191,29 @@ class DisruptName {
     }
   }
 
-  setPos () {
-    // Place on canvas
+  _setXY () {
     this.x = Math.random() * (this.canvas.width - this.w)
-    this.y = Math.random() * (this.canvas.height - this.h - this.baseH)
+    this.y = Math.random() * (this.canvas.height - this.h)
+  }
+
+  setPos () {
+    if (IS_MOBILE) {
+      // Don't worry about ignoring orb on mobile
+      this._setXY()
+    } else {
+      // Place on canvas
+      // Let's try and keep stuff out from behind the orb
+      let orbSide = Math.min(this.canvas.width, this.canvas.height) * .65
+      let orbX = (this.canvas.width - orbSide) / 2
+      let orbY = (this.canvas.height - orbSide) / 2
+
+      do {
+        this._setXY()
+      } while (
+        (this.x > (orbX - this.w) && this.x < orbX + orbSide &&
+        this.y > (orbY - this.h) && this.y < orbY + orbSide)
+      )
+    }
   }
 
   setUpdateCounter () {
