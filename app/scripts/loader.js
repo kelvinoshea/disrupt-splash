@@ -7,6 +7,9 @@ $(function() {
   Promise.all([font_disruptheavy.load(), font_karla.load(), font_saira.load()]).then(function () {
     // Fonts loaded
     $("html").addClass("fonts-loaded");
+
+    // Set up name background using fonts
+    window.NAME_BG.init()
   });
 
   function imageLoadPromise(selector) {

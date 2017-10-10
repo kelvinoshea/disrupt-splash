@@ -110,6 +110,7 @@ pump([
       './app/scripts/vendor/shake.js',
       './app/scripts/disrupt.js',
       './app/scripts/backgroundEffect.js',
+      './app/scripts/nameBackground.js',
       './app/scripts/loader.js',
       './app/scripts/serviceWorker.js'
     ]),
