@@ -75,7 +75,7 @@ class NameBackground {
     this.bumpCol = 0
     this.bumpLeft = 0
     this.bumpRight = 0
-    this.bumpChance = 0.1
+    this.bumpChance = 0.15
 
     this.setTimer(0)
   }
@@ -206,7 +206,6 @@ class NameBackground {
     let lineAdjust = this.lineHeight * (0.5 + fineTune)
 
     let dx = 0
-    let dxMin = this.fontSize
     let dxMax = this.fontSize * 2
 
     let dyOld = 0
@@ -220,7 +219,7 @@ class NameBackground {
       dy = randInt(-dyMax, dyMax)
 
       // Draw line
-      dx = randInt(dxMin, dxMax) * (Math.random() < 0.5 ? 1 : -1)
+      dx = randInt(-dxMax, dxMax)
       rectY = imgY + i * this.lineHeight - lineAdjust
       this.ctx.drawImage(
         img,
@@ -231,13 +230,29 @@ class NameBackground {
       dyOld = dy
     }
 
+    // Place a guaranteed blue line somewhere
+    let guaranteedLine = randInt(0, this.numLines)
+    this.ctx.fillRect(0, imgY + guaranteedLine * this.lineHeight + fineTune * this.lineHeight, this.w, this.fontSize)
+
+    // Random chance for any given line to just become a blue rectangle
+    let rectChance = 1 / this.numLines * 2
+    for (let i = 0; i < this.numLines; i++) {
+      if (Math.random() < rectChance && i !== guaranteedLine) {
+        this.ctx.clearRect(0, imgY + i * this.lineHeight + fineTune * this.lineHeight, this.w, this.fontSize)
+      }
+    }
+
     let png = this.canvas.toDataURL()
     this.clearCanvas()
 
     return new Promise((resolve, reject) => {
-      this.srcImage.onload = resolve
-      this.srcImage.onerror = resolve
-      this.srcImage.src = png
+      let img = new Image()
+      img.onload = () => {
+        this.srcImage = img
+        resolve()
+      }
+      img.onerror = reject
+      img.src = png
     })
   }
 
