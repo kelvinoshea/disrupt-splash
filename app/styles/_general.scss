@@ -433,6 +433,11 @@ html:not(.isMobile) .icon-link {
   position: relative;
   overflow: hidden;
   padding: 0.25rem;
+
+  &:hover {
+    background: $disrupt-magenta;
+  }
+
   a {
     width: 100%;
     text-transform: uppercase;
