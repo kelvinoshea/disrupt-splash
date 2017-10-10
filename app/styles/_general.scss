@@ -436,13 +436,12 @@ html:not(.isMobile) .icon-link {
   padding: 0.25rem;
   animation-delay: 10s;
 
-
-  &:hover {
-    background: $disrupt-magenta;
-  }
-
   a {
     width: 100%;
     text-transform: uppercase;
   }
+}
+
+html:not(.isMobile) .pozibleLink:hover {
+  background: $disrupt-magenta;
 }

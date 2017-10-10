@@ -126,7 +126,7 @@ $(function() {
     } else {
       $('.email').next().attr('data-text', 'Emulated Success!').html('Emulated Success!');
       $('.email').css('pointer-events', 'none');
-      setTimeout( function(){ $(".pozibleLink").removeClass("hidden").addClass("appear"); }, 1000)
+      setTimeout( function(){ $(".pozibleLink").removeClass("hidden").addClass("appear"); }, 500)
     }
   }
 
