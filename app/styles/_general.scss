@@ -431,8 +431,11 @@ html:not(.isMobile) .icon-link {
 .pozibleLink {
   @include buttonBackgroundGlitch(pozibleAnim, $disrupt-magenta, $neon-cyan, $disrupt-green, normal);
   position: relative;
+  display: block;
   overflow: hidden;
   padding: 0.25rem;
+  animation-delay: 10s;
+
 
   &:hover {
     background: $disrupt-magenta;
