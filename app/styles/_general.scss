@@ -144,10 +144,10 @@
   width: 90%;
   color: rgba(255,255,255,1);
   cursor: text;
-  background: rgba(0,0,0,0.3);
+  background: rgba($disrupt-dark-blue, 0.5);
   transition: width .2s ease-in-out, color .2s ease-in-out .2s, border .2s ease-in-out;
   &:valid {
-    border-bottom: 1px solid transparentize($bright-green, 0.2);
+    border-bottom: 1px solid transparentize($disrupt-green, 0.2);
   }
   &:not([value=""]):invalid {
     border-bottom: 1px solid transparentize($red, 0.2);
@@ -426,4 +426,22 @@ html:not(.isMobile) .icon-link {
     justify-content: center;
     align-items: center;
   }
+}
+
+.pozibleLink {
+  @include buttonBackgroundGlitch(pozibleAnim, $disrupt-magenta, $neon-cyan, $disrupt-green, normal);
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0.25rem;
+  animation-delay: 10s;
+
+  a {
+    width: 100%;
+    text-transform: uppercase;
+  }
+}
+
+html:not(.isMobile) .pozibleLink:hover {
+  background: $disrupt-magenta;
 }

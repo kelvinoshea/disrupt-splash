@@ -110,6 +110,7 @@ $(function() {
           if (result == "1") {
             $('.email').next().attr('data-text', 'Thank You!').html('Thank You!');
             $('.email').css('pointer-events', 'none');
+            setTimeout( function(){ $(".pozibleLink").removeClass("hidden").addClass("appear"); }, 1000)
           } else if (result == "duplicate") {
             $('.email').next().attr('data-text', 'You have already subscribed!').html('You have already subscribed!');
           } else {
@@ -120,12 +121,12 @@ $(function() {
         error: function(error) {
           console.log(error);
           $('.email').next().attr('data-text', 'Try Again').html('Try Again');
-
         }
       });
     } else {
       $('.email').next().attr('data-text', 'Emulated Success!').html('Emulated Success!');
       $('.email').css('pointer-events', 'none');
+      setTimeout( function(){ $(".pozibleLink").removeClass("hidden").addClass("appear"); }, 500)
     }
   }
 
