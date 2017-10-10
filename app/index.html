@@ -129,16 +129,16 @@
         <a href="https://www.qut.edu.au/" class="icon-link qut-icon" target="_blank"></a>
       </div>
       <div class="socials">
-        <a href="https://www.facebook.com/disrupt17/" class="icon-link facebook" target="_blank">
+        <a href="https://www.facebook.com/disrupt17/" class="icon-link facebook" target="_blank" onclick="ga('send','social','Facebook','view','https://www.facebook.com/disrupt17/');">
           <i class="fa fa-facebook" aria-hidden="true"></i>
         </a>
-        <a href="https://www.instagram.com/disrupt17/" class="icon-link instagram" target="_blank">
+        <a href="https://www.instagram.com/disrupt17/" class="icon-link instagram" target="_blank" onclick="ga('send','social','Instagram','view','https://www.instagram.com/disrupt17/');">
           <i class="fa fa-instagram" aria-hidden="true"></i>
         </a>
         <a class="icon-link snapchat" target="_blank">
           <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
         </a>
-        <a href="https://github.com/kelvinoshea/disrupt-splash" class="icon-link github" target="_blank">
+        <a href="https://github.com/kelvinoshea/disrupt-splash" class="icon-link github" target="_blank" onclick="ga('send','social','Github','view','https://github.com/kelvinoshea/disrupt-splash');">
           <i class="fa fa-github" aria-hidden="true"></i>
         </a>
       </div>
@@ -176,13 +176,10 @@
   <script src="https://use.fontawesome.com/5400611028.js" async></script>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107300966-1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};
-    gtag('js', new Date());gtag('config', 'UA-107300966-1');
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date();
+  ga('create', 'UA-107300966-1', 'auto'); ga('send', 'pageview');
   </script>
-
-  <!-- Built with love using Web Starter Kit -->
-
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
 </body>
 </html>

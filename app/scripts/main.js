@@ -96,6 +96,7 @@ $(function() {
   function formSubmit() {
     $(".submitButton").addClass("hidden");
     if (!isLocalhost) {
+      ga('send', 'event', 'Register Form', 'submit');
       $.ajax({
         url: 'registerEmail.php',
         type: 'POST',
