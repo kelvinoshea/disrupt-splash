@@ -56,6 +56,28 @@ class NameBackground {
     this.ctx = this.canvas.getContext('2d')
 
     this.targetNode = document.querySelector(target)
+
+    this.FPS = 60
+    this.dt = 0
+    this.lastDraw = null
+
+    // Animation properties
+    this.timer = 0
+    this.moveTimerMin = 5
+    this.moveTimerMax = 6
+    this.bumpTimer = 0.02
+
+    this.numColumns = 150
+    this.columns = new Array(this.numColumns).fill(0)
+    this.columnOffset = this.fontSize * 3/5
+
+    this.bumping = true
+    this.bumpCol = 0
+    this.bumpLeft = 0
+    this.bumpRight = 0
+    this.bumpChance = 0.1
+
+    this.setTimer(0)
   }
 
   get fontSize () {
@@ -74,6 +96,14 @@ class NameBackground {
     return this.numLines * this.lineHeight
   }
 
+  get ms () {
+    return 1000 / this.FPS
+  }
+
+  get columnWidth () {
+    return this.w / this.numColumns
+  }
+
   // INIT FUNCTIONS
 
   init () {
@@ -82,13 +112,15 @@ class NameBackground {
     this.makeSrcImage().then(img => {
       return this.disruptSrcImage(img)
     }).then(() => {
-      this.ctx.drawImage(this.srcImage, 0, 0)
+      // Initial draw
+      this.setupBump()
+      this.draw()
+
+      // Start animation
+      this.startAnim()
     }).catch(() => {
       console.log('Error setting up background image.')
     })
-
-    // Start animation
-    this.startAnim()
   }
 
   initCanvas () {
@@ -108,6 +140,7 @@ class NameBackground {
   }
 
   joinNames (names) {
+    // Add spaces between letters and join with bullet points
     return names.map(n => n.toUpperCase().split('').join(' ')).join('  •  ')
   }
 
@@ -173,11 +206,12 @@ class NameBackground {
     let lineAdjust = this.lineHeight * (0.5 + fineTune)
 
     let dx = 0
-    let dxMax = this.fontSize
+    let dxMin = this.fontSize
+    let dxMax = this.fontSize * 2
 
     let dyOld = 0
     let dy = 0
-    let dyMax = this.fontSize / 4
+    let dyMax = this.fontSize / 5
 
     let rectY
 
@@ -186,7 +220,7 @@ class NameBackground {
       dy = randInt(-dyMax, dyMax)
 
       // Draw line
-      dx = randInt(-dxMax, dxMax)
+      dx = randInt(dxMin, dxMax) * (Math.random() < 0.5 ? 1 : -1)
       rectY = imgY + i * this.lineHeight - lineAdjust
       this.ctx.drawImage(
         img,
@@ -213,14 +247,106 @@ class NameBackground {
 
   // DRAW FUNCTIONS
 
+  setTimer (min, max = -1) {
+    let time = (max === -1 ? min : randBetween(min, max))
+    this.timer = Math.floor(time * this.FPS)
+  }
+
   startAnim () {
     window.requestAnimationFrame(this.animate.bind(this))
   }
 
-  animate () {
+  animate (timestamp) {
+    if (this.lastDraw === null) { this.lastDraw = timestamp }
+    this.dt += timestamp - this.lastDraw
+
+    // Run logic at fps
+    while (this.dt > 0) {
+      this.dt -= this.ms
+
+      if (--this.timer <= 0) {
+        if (!this.bumping) {
+          this.setTimer(this.moveTimerMin, this.moveTimerMax)
+          this.setupBump()
+        } else {
+          this.setTimer(this.bumpTimer)
+          this.bumping = this.doBump()
+          this.draw()
+        }
+      }
+    }
 
     // Schedule next update
+    this.lastDraw = timestamp
     window.requestAnimationFrame(this.animate.bind(this))
+  }
+
+  bump () {
+    let c = Math.random()
+    if (c < this.bumpChance) {
+      return 1 * (Math.random() < 0.5 ? 1 : -1)
+    }
+    return 0
+  }
+
+  setupBump () {
+    this.bumping = true
+    // this.bumpCol = randInt(0, this.numColumns - 1)
+    this.bumpCol = Math.floor(this.numColumns / 2)
+    this.columns[this.bumpCol] = 0
+
+    this.bumpLeft = this.bumpCol
+    this.bumpRight = this.bumpCol
+  }
+
+  // Return true if there are still more bumps left
+  doBump () {
+    // Bump sides
+    let bump
+
+    if (--this.bumpLeft >= 0) {
+      bump = this.bump()
+      this.columns[this.bumpLeft] = this.columns[this.bumpLeft + 1] + bump
+
+      // Adjust bump tail for smoother animation
+      if (this.bumpLeft > 0) {
+        for (let i = this.bumpLeft - 1; i >= 0; i--) {
+          // Is this out of range of the previous column?
+          let diff = this.columns[i] - this.columns[i + 1]
+          if (Math.abs(diff) > 1) {
+            this.columns[i] = this.columns[i + 1] + (diff / Math.abs(diff))
+          }
+        }
+      }
+    }
+    if (++this.bumpRight < this.numColumns) {
+      bump = this.bump()
+      this.columns[this.bumpRight] = this.columns[this.bumpRight - 1] + bump
+
+      // Adjust bump tail for smoother animation
+      if (this.bumpRight < this.numColumns - 1) {
+        for (let i = this.bumpRight + 1; i < this.numColumns; i++) {
+          // Is this out of range of the previous column?
+          let diff = this.columns[i] - this.columns[i - 1]
+          if (Math.abs(diff) > 1) {
+            this.columns[i] = this.columns[i - 1] + (diff / Math.abs(diff))
+          }
+        }
+      }
+    }
+
+    return (this.bumpLeft >= 0 || this.bumpRight < this.numColumns)
+  }
+
+  draw () {
+    this.clearCanvas()
+    for (let i = 0; i < this.numColumns; i++) {
+      this.ctx.drawImage(
+        this.srcImage,
+        i * this.columnWidth, 0, this.columnWidth, this.h,
+        i * this.columnWidth, this.columnOffset * this.columns[i], this.columnWidth, this.h
+      )
+    }
   }
 }
 
