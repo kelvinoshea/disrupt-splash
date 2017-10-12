@@ -17,6 +17,7 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="417">
   <meta property="og:image:height" content="417">
+  <meta name="google-site-verification" content="IfNTU5Pb7fw8bbcciDW0D1rJhOWNP4sW2cpS8m8onXc" />
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -98,6 +99,9 @@
                 register
               </button>
             </div>
+            <div class="pozibleLink hidden">
+              <a href="https://pozible.com/project/disrupt-graduate-exhibition" target="_blank">Make an impact, support Disrupt</a>
+            </div>
           </div>
         </form>
       </div>
@@ -125,16 +129,16 @@
         <a href="https://www.qut.edu.au/" class="icon-link qut-icon" target="_blank"></a>
       </div>
       <div class="socials">
-        <a href="https://www.facebook.com/disrupt17/" class="icon-link facebook" target="_blank">
+        <a href="https://www.facebook.com/disrupt17/" class="icon-link facebook" target="_blank" onclick="ga('send','social','Facebook','view','https://www.facebook.com/disrupt17/');">
           <i class="fa fa-facebook" aria-hidden="true"></i>
         </a>
-        <a href="https://www.instagram.com/disrupt17/" class="icon-link instagram" target="_blank">
+        <a href="https://www.instagram.com/disrupt17/" class="icon-link instagram" target="_blank" onclick="ga('send','social','Instagram','view','https://www.instagram.com/disrupt17/');">
           <i class="fa fa-instagram" aria-hidden="true"></i>
         </a>
         <a class="icon-link snapchat" target="_blank">
           <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
         </a>
-        <a href="https://github.com/kelvinoshea/disrupt-splash" class="icon-link github" target="_blank">
+        <a href="https://github.com/kelvinoshea/disrupt-splash" class="icon-link github" target="_blank" onclick="ga('send','social','Github','view','https://github.com/kelvinoshea/disrupt-splash');">
           <i class="fa fa-github" aria-hidden="true"></i>
         </a>
       </div>
@@ -164,6 +168,7 @@
   <script src="scripts/vendor/shake.js"></script>
   <script src="scripts/disrupt.js"></script>
   <script src="scripts/backgroundEffect.js"></script>
+  <script src="scripts/nameBackground.js"></script>
   <script src="scripts/loader.js"></script>
   <script src="scripts/serviceWorker.js"></script>
   <!-- endbuild -->
@@ -171,13 +176,18 @@
   <script src="https://use.fontawesome.com/5400611028.js" async></script>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107300966-1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};
-    gtag('js', new Date());gtag('config', 'UA-107300966-1');
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date();
+  ga('create', 'UA-107300966-1', 'auto'); ga('send', 'pageview');ga('set', 'transport', 'beacon');
   </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
 
-  <!-- Built with love using Web Starter Kit -->
-
+  <!-- Heat Map -->
+  <script>
+  (function(h,e,a,t,m,p) {
+  m=e.createElement(a);m.async=!0;m.src=t;
+  p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
+  })(window,document,'script','https://u.heatmap.it/log.js');
+  </script>
 </body>
 </html>

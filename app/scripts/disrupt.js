@@ -149,6 +149,11 @@ class MotionTarget {
     // Vibrate and distort everything
     window.DISRUPT.addDisruptions()
     navigator.vibrate(500)
+
+    // Analytics
+    if (typeof ga === 'function') {
+      ga('send', 'event', 'Easter Egg', 'shake')
+    }
   }
 }
 
