@@ -63,7 +63,7 @@ $(function() {
   // Hide and show extraneous elements when typing email on mobile devices
   var toggleWhileTyping = function(toggle) {
     if (IS_MOBILE) {
-      $('.disruptTitle, .details, footer').fadeTo(200, toggle ? 1 : 0);
+      $('.disruptTitle, .details, footer').fadeTo(200, toggle ? 1 : 0).css('pointer-events', toggle ? "none" : "initial");
     }
   }
 
