@@ -275,6 +275,12 @@ class NameBackground {
     if (this.lastDraw === null) { this.lastDraw = timestamp }
     this.dt += timestamp - this.lastDraw
 
+    // Too much inactive tab time causes large delta and freezes the site
+    if (this.dt > this.ms * this.FPS) {
+      // If we have to do more than 1 second of logic, just skip it all
+      this.dt = this.ms
+    }
+
     // Run logic at fps
     while (this.dt > 0) {
       this.dt -= this.ms
